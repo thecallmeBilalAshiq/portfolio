@@ -1,4 +1,4 @@
-<h1 align="center">🚀 Welcome to My GitHub Portfolio! 🚀</h1>
+<h1 align="center">🚀 Welcome to My Portfolio! 🚀</h1>
 <p align="center">
   <img src="https://readme-typing-svg.herokuapp.com?color=%2336BCF7&size=30&center=true&vCenter=true&width=650&lines=Hello!+I'm+Bilal+Aashiq;🚀+Full-Stack+Developer+%7C+ML+Engineer;🎯+Tech+Enthusiast+%7C+Open-Source+Contributor;📚+Passionate+About+Coding+%7C+Teaching;💡+Always+Learning+New+Technologies" />
 </p>
@@ -43,23 +43,28 @@
 
 ## 🏆 Featured Projects
 
-### 🎯 [Statistics Research Project](https://thecallmebilalashiq.github.io/portfolio/)
+### 🎯 [Statistics Research Project](https://medium.com/@metheBilalAshiq/reason-for-earlier-deaths-of-new-born-babies-due-to-different-diseases-probability-and-fc04fb78d0bb)
 📊 *Data-driven research on newborn mortality using R programming.*
 
-### 🌱 [Spring Boot Website](https://thecallmebilalashiq.github.io/portfolio/)
+### 🌱 [Spring Boot Website](https://github.com/thecallmeBilalAshiq/Spring_Boot_Java_Project_App)
 🔗 *Scalable web application built using Java & Spring Boot.*
 
-### ✈️ [Airline Management System](https://thecallmebilalashiq.github.io/portfolio/)
+### ✈️ [Airline Management System](https://medium.com/@metheBilalAshiq/airline-management-system-database-project-c34d9e0cfd4f)
 🛫 *Database-driven airline management system using Oracle & C#.*
 
-### 🛠️ [Robo OS](https://thecallmebilalashiq.github.io/portfolio/)
+### 🛠️ [Robo OS](https://medium.com/@metheBilalAshiq/robo-os-operating-system-project-5b8267c85731)
 🤖 *Custom-built OS with a focus on efficiency & security.*
 
-### 📖 [Dictionary Implementation](https://thecallmebilalashiq.github.io/portfolio/)
+### 📖 [Dictionary Implementation](https://medium.com/towardsdev/english-dictionary-implementation-with-data-structure-and-algorithems-dsa-in-c-7d6510f4c8e8)
 📘 *A Data Structures and Algorithms (DSA) project in C++.*
 
-### 🔦 [Knight Rider Light](https://thecallmebilalashiq.github.io/portfolio/)
+### 🔦 [Knight Rider Light](https://medium.com/@metheBilalAshiq/led-knight-rider-dld-project-64fcbd30e096)
 💡 *Digital Logic Design (DLD) project featuring a Knight Rider light pattern.*
+
+### 🔦 [P2P Application](https://medium.com/@metheBilalAshiq/p2p-application-82fa3a64affd)
+💡 *P2P Application Project of Computer Networks (CN).*
+
+
 
 ---
 

@@ -10,7 +10,7 @@
   <img src="https://github.com/thecallmebilalashiq/thecallmebilalashiq/blob/main/assets/header.gif" alt="Animated Header" />
 </p>
 
----
+![](https://i.imgur.com/waxVImv.png)
 
 ## 🌍 About Me
 
@@ -21,7 +21,7 @@
 
 📩 **Let's Connect:** [Email](mailto:bashiq031@gmail.com) | [LinkedIn](https://www.linkedin.com/in/thecallmebilalashiq/) | [GitHub](https://github.com/thecallmebilalashiq) | [Twitter](https://twitter.com/thecallmebilalashiq)
 
----
+![](https://i.imgur.com/waxVImv.png)
 
 ## 🚀 Tech Stack & Skills
 
@@ -42,7 +42,7 @@
 ![Ubuntu](https://img.shields.io/badge/-Ubuntu-E95420?style=for-the-badge&logo=ubuntu&logoColor=white)
 ![VMware](https://img.shields.io/badge/-VMware-607080?style=for-the-badge&logo=vmware&logoColor=white)
 
----
+![](https://i.imgur.com/waxVImv.png)
 
 ## 🏆 Featured Projects
 
@@ -67,9 +67,7 @@
 ### 🔦 [P2P Application](https://medium.com/@metheBilalAshiq/p2p-application-82fa3a64affd)
 💡 *P2P Application Project of Computer Networks (CN).*
 
-
-
----
+![](https://i.imgur.com/waxVImv.png)
 
 ## 📊 GitHub Analytics
 
@@ -82,15 +80,7 @@
   <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=thecallmebilalashiq&layout=compact&theme=tokyonight" alt="Top Languages" width="48%"/>
 </p>
 
----
-
-## 🎵 Coding Vibes 🎵
-
-<p align="center">
-  <img src="https://spotify-github-profile.vercel.app/api/view?uid=31pj6p6yq44p6v3ks3y4syvcvmry&cover_image=true&theme=default&show_offline=true&background_color=121212&interchange=true" alt="Spotify Now Playing">
-</p>
-
----
+![](https://i.imgur.com/waxVImv.png)
 
 ## 🤝 Let's Connect
 
@@ -101,6 +91,6 @@
   <a href="https://twitter.com/thecallmebilalashiq"><img src="https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white" /></a>
 </p>
 
----
+![](https://i.imgur.com/waxVImv.png)
 
 🔥 *Thanks for visiting my GitHub profile!* 🚀

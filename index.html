@@ -69,6 +69,13 @@
             background-color: var(--background);
             line-height: 1.6;
             overflow-x: hidden;
+            background-image: radial-gradient(rgba(108, 99, 255, 0.03) 1px, transparent 0);
+            background-size: 28px 28px;
+        }
+
+        .dark body {
+            background-image: radial-gradient(rgba(108, 99, 255, 0.08) 1.5px, transparent 0);
+            background-size: 28px 28px;
         }
 
         h1,
@@ -195,16 +202,23 @@
             left: 0;
             width: 100%;
             z-index: 50;
-            transition: all 0.3s ease;
-            padding: 1rem 0;
+            transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+            padding: 1.25rem 0;
             backdrop-filter: blur(0);
         }
 
         .header-scrolled {
-            background-color: rgba(var(--background-rgb), 0.8);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 5px 20px var(--shadow);
-            padding: 0.75rem 0;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+            padding: 0.8rem 0;
+        }
+
+        .dark .header-scrolled {
+            background: rgba(10, 25, 47, 0.8);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         }
 
         .navbar {
@@ -630,6 +644,34 @@
             100% {
                 transform: scale(1);
                 box-shadow: 0 10px 20px rgba(108, 99, 255, 0.4);
+            }
+        }
+
+        /* Cinematic Background Glow Orb */
+        .hero-glow-orb {
+            position: absolute;
+            top: 20%;
+            right: 10%;
+            width: 320px;
+            height: 320px;
+            background: radial-gradient(circle, rgba(108, 99, 255, 0.25) 0%, rgba(67, 206, 162, 0.08) 60%, transparent 100%);
+            filter: blur(80px);
+            border-radius: 50%;
+            z-index: 0;
+            pointer-events: none;
+            animation: orb-float 12s infinite alternate ease-in-out;
+        }
+
+        .dark .hero-glow-orb {
+            background: radial-gradient(circle, rgba(108, 99, 255, 0.15) 0%, rgba(67, 206, 162, 0.05) 60%, transparent 100%);
+        }
+
+        @keyframes orb-float {
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+            100% {
+                transform: translate(-30px, 30px) scale(1.15);
             }
         }
 
@@ -1590,16 +1632,16 @@
         /* Experience Section */
         .experience-container {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(3, 1fr);
             gap: 1.5rem;
-            max-width: 1200px;
+            max-width: 1240px;
             margin: 0 auto;
         }
 
         .experience-card {
             background-color: var(--card);
             border-radius: 12px;
-            padding: 1.75rem;
+            padding: 1.5rem;
             box-shadow: var(--shadow-lg);
             transition: all 0.3s ease;
             position: relative;
@@ -1611,16 +1653,13 @@
             flex-direction: column;
         }
 
-        @media (min-width: 993px) {
-            .experience-card:last-child {
-                grid-column: span 2;
-                max-width: 800px;
-                margin: 0 auto;
-                width: 100%;
+        @media (max-width: 992px) {
+            .experience-container {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
 
-        @media (max-width: 992px) {
+        @media (max-width: 768px) {
             .experience-container {
                 grid-template-columns: 1fr;
             }
@@ -2920,9 +2959,9 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
     <section id="home" class="hero">
         <div id="particles-js" class="hero-particles"></div>
+        <div class="hero-glow-orb"></div>
         <div class="container">
             <div class="hero-grid">
                 <div class="hero-content" data-aos="fade-up" data-aos-duration="1000">
@@ -3353,6 +3392,28 @@
                         <li class="experience-responsibility">
                             <i class="fas fa-check-circle"></i>
                             <span>Collaborating with other student organizations and community partners</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="experience-card" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="1000">
+                    <div class="experience-header">
+                        <h3 class="experience-company">LUMS NOP (Seasonal)</h3>
+                        <span class="experience-date"><i class="fas fa-calendar-alt"></i> Aug 2020 - Dec 2020</span>
+                    </div>
+                    <p class="experience-position">National Outreach Program Scholar</p>
+                    <ul class="experience-responsibilities">
+                        <li class="experience-responsibility">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Selected for the highly prestigious LUMS NOP from a competitive national pool of applicants.</span>
+                        </li>
+                        <li class="experience-responsibility">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Completed intensive academic preparation focusing on advanced Mathematics, SAT concepts, and analytical English.</span>
+                        </li>
+                        <li class="experience-responsibility">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Engaged in rigorous training and structured mentorship, refining exam strategies and logical reasoning.</span>
                         </li>
                     </ul>
                 </div>
@@ -4632,11 +4693,12 @@ Redirecting to direct contact form to initiate hiring! Get ready...`;
             }
 
             // Experience
-            if (lower.includes('experience') || lower.includes('job') || lower.includes('entracloud') || lower.includes('intern')) {
+            if (lower.includes('experience') || lower.includes('job') || lower.includes('entracloud') || lower.includes('intern') || lower.includes('lums') || lower.includes('nop')) {
                 return `Bilal has stellar practical experience:<br>
 - 🌐 <b>CTO & Supervisor</b> at Entracloud (leading dev pipelines).<br>
 - 🔬 <b>Research Assistant</b> in AI & NLP at FAST-NUCES.<br>
-- 🤖 <b>AI Intern</b> at Shopilam (building LLM agents).`;
+- 🤖 <b>AI Intern</b> at Shopilam (building LLM agents).<br>
+- 🎓 <b>LUMS NOP Scholar</b> (prestigious seasonal selection in 2020).`;
             }
 
             // General Questions Fallback

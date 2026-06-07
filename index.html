@@ -546,6 +546,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            margin-top: -96px;
         }
 
         .hero-image-wrapper {
@@ -3086,24 +3087,26 @@
                 <div class="hero-image-container" data-aos="zoom-in" data-aos-duration="1000">
                     <div class="hero-image-wrapper">
                         <div class="hero-image-bg"></div>
-                        <div class="hero-orbital-particle"></div>
-                        <div class="hero-orbital-particle"></div>
-                        <div class="hero-orbital-particle"></div>
                         
                         <video 
                             id="heroVideo"
                             src="./Avator_video.mp4" 
                             class="hero-image" 
-                            autoplay
-                            loop
                             playsinline>
-                            {once: true}
                         </video>
-                        
                     </div>
                 </div>           
             </div>
         </div>
+
+    <script>
+        document.body.addEventListener('click', function() {
+            const video = document.getElementById('heroVideo');
+            if (video.paused) {
+                video.play();
+            }
+        }, { once: true }); 
+    </script>      
     </section>
 
 

@@ -1722,8 +1722,8 @@
 
         .experience-container {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
             max-width: 1280px;
             margin: 0 auto;
         }
@@ -1748,6 +1748,12 @@
         .dark .experience-card {
             background: linear-gradient(145deg, rgba(17, 34, 64, 0.95), rgba(10, 25, 47, 0.98));
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 2px 8px rgba(108, 99, 255, 0.1);
+        }
+
+        @media (max-width: 1200px) {
+            .experience-container {
+                grid-template-columns: repeat(3, 1fr);
+            }
         }
 
         @media (max-width: 992px) {
@@ -1827,38 +1833,56 @@
             z-index: 1;
         }
 
-        /* Company icon badge */
-        .experience-icon-badge {
-            width: 48px;
-            height: 48px;
-            border-radius: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            color: white;
-            background: linear-gradient(135deg, var(--primary), #43cea2);
-            box-shadow: 0 4px 15px rgba(108, 99, 255, 0.35);
-            margin-bottom: 1.25rem;
-            flex-shrink: 0;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .experience-card:hover .experience-icon-badge {
-            transform: scale(1.1) rotate(-5deg);
-            box-shadow: 0 6px 20px rgba(108, 99, 255, 0.5);
-        }
-
+        /* Company logo + name row */
         .experience-header {
             display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 0.5rem;
+            align-items: center;
+            gap: 1rem;
             margin-bottom: 0.75rem;
         }
 
+        .experience-logo {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            flex-shrink: 0;
+            overflow: hidden;
+            background: white;
+            border: 2px solid rgba(108, 99, 255, 0.15);
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+
+        .dark .experience-logo {
+            background: rgba(255, 255, 255, 0.95);
+            border-color: rgba(108, 99, 255, 0.25);
+        }
+
+        .experience-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 6px;
+        }
+
+        .experience-card:hover .experience-logo {
+            transform: scale(1.1);
+            box-shadow: 0 5px 18px rgba(108, 99, 255, 0.25);
+            border-color: var(--primary);
+        }
+
+        .experience-header-text {
+            display: flex;
+            flex-direction: column;
+            gap: 0.35rem;
+            min-width: 0;
+        }
+
         .experience-company {
-            font-size: 1.15rem;
+            font-size: 1.1rem;
             font-weight: 700;
             line-height: 1.3;
             color: var(--foreground);
@@ -1870,12 +1894,12 @@
             gap: 0.4rem;
             background: linear-gradient(135deg, rgba(108, 99, 255, 0.1), rgba(67, 206, 162, 0.08));
             color: var(--primary);
-            padding: 0.35rem 0.85rem;
+            padding: 0.3rem 0.75rem;
             border-radius: 50px;
-            font-size: 0.78rem;
+            font-size: 0.75rem;
             font-weight: 500;
             border: 1px solid rgba(108, 99, 255, 0.12);
-            white-space: nowrap;
+            width: fit-content;
         }
 
         .experience-date i {
@@ -1913,40 +1937,77 @@
             list-style: none;
             margin: 0;
             padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
         }
 
         .experience-responsibility {
             display: flex;
             align-items: flex-start;
-            gap: 0.75rem;
-            margin-bottom: 0.85rem;
+            gap: 0.6rem;
             color: var(--muted-foreground);
-            font-size: 0.9rem;
-            line-height: 1.6;
-            padding: 0.5rem 0.65rem;
-            border-radius: 10px;
-            transition: background-color 0.3s ease, transform 0.3s ease;
+            font-size: 0.8rem;
+            line-height: 1.5;
+            padding: 0.45rem 0.6rem;
+            border-radius: 8px;
+            border-left: 3px solid transparent;
+            background: linear-gradient(135deg, rgba(108, 99, 255, 0.03), rgba(67, 206, 162, 0.02));
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            animation: exp-item-fade 0.5s ease forwards;
         }
 
-        .experience-responsibility:last-child {
-            margin-bottom: 0;
+        .experience-responsibility:nth-child(1) { animation-delay: 0.1s; border-left-color: var(--primary); }
+        .experience-responsibility:nth-child(2) { animation-delay: 0.2s; border-left-color: #43cea2; }
+        .experience-responsibility:nth-child(3) { animation-delay: 0.3s; border-left-color: var(--secondary); }
+        .experience-responsibility:nth-child(4) { animation-delay: 0.4s; border-left-color: #f7971e; }
+        .experience-responsibility:nth-child(5) { animation-delay: 0.5s; border-left-color: var(--primary); }
+        .experience-responsibility:nth-child(6) { animation-delay: 0.6s; border-left-color: #43cea2; }
+        .experience-responsibility:nth-child(7) { animation-delay: 0.7s; border-left-color: var(--secondary); }
+
+        @keyframes exp-item-fade {
+            from { opacity: 0; transform: translateX(-8px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        /* Shimmer hover */
+        .experience-responsibility::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(108, 99, 255, 0.06), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .experience-responsibility:hover::after {
+            left: 100%;
         }
 
         .experience-responsibility:hover {
-            background: rgba(108, 99, 255, 0.04);
+            background: linear-gradient(135deg, rgba(108, 99, 255, 0.06), rgba(67, 206, 162, 0.04));
             transform: translateX(4px);
         }
 
+        .dark .experience-responsibility {
+            background: linear-gradient(135deg, rgba(108, 99, 255, 0.05), rgba(67, 206, 162, 0.03));
+        }
+
         .dark .experience-responsibility:hover {
-            background: rgba(108, 99, 255, 0.08);
+            background: linear-gradient(135deg, rgba(108, 99, 255, 0.1), rgba(67, 206, 162, 0.06));
         }
 
         .experience-responsibility i {
             color: var(--primary);
-            font-size: 0.65rem;
+            font-size: 0.35rem;
             margin-top: 0.45rem;
             flex-shrink: 0;
-            opacity: 0.8;
+            opacity: 0;
         }
 
         .experience-responsibility span {
@@ -3517,14 +3578,16 @@
 
                 <div class="experience-card" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
                     <div class="experience-card-inner">
-                        <div class="experience-icon-badge">
-                            <i class="fas fa-users"></i>
-                        </div>
                         <div class="experience-header">
-                            <h3 class="experience-company">COLABS - Technology Incubator</h3>
-                            <span class="experience-date"><i class="fas fa-calendar-alt"></i> July 01, 2026 - August 13, 2026</span>
+                            <div class="experience-logo">
+                                <img src="logos/colabs_logo.png" alt="COLABS Logo">
+                            </div>
+                            <div class="experience-header-text">
+                                <h3 class="experience-company">COLABS - Technology Incubator</h3>
+                                <span class="experience-date"><i class="fas fa-calendar-alt"></i> July 01, 2026 - Aug 13, 2026</span>
+                            </div>
                         </div>
-                        <p class="experience-position">People & Culture Intern</p>
+                        <p class="experience-position">Rocket Intern</p>
                         <div class="experience-divider"></div>
                         <ul class="experience-responsibilities">
                             <li class="experience-responsibility">
@@ -3541,14 +3604,16 @@
 
                 <div class="experience-card" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
                     <div class="experience-card-inner">
-                        <div class="experience-icon-badge">
-                            <i class="fas fa-flask"></i>
-                        </div>
                         <div class="experience-header">
-                            <h3 class="experience-company">FAST NUCES - National University</h3>
-                            <span class="experience-date"><i class="fas fa-calendar-alt"></i> August 10, 2025 - December 10, 2025</span>
+                            <div class="experience-logo">
+                                <img src="logos/fast_logo.png" alt="FAST NUCES Logo">
+                            </div>
+                            <div class="experience-header-text">
+                                <h3 class="experience-company">FAST NUCES - National University</h3>
+                                <span class="experience-date"><i class="fas fa-calendar-alt"></i> Aug 10, 2025 - Dec 10, 2025</span>
+                            </div>
                         </div>
-                        <p class="experience-position">Research Assistant (RA)</p>
+                        <p class="experience-position">Research Assistant</p>
                         <div class="experience-divider"></div>
                         <ul class="experience-responsibilities">
                             <li class="experience-responsibility">
@@ -3565,14 +3630,16 @@
 
                 <div class="experience-card" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
                     <div class="experience-card-inner">
-                        <div class="experience-icon-badge">
-                            <i class="fas fa-robot"></i>
-                        </div>
                         <div class="experience-header">
-                            <h3 class="experience-company">National Incubation Center NIC Faisalabad</h3>
-                            <span class="experience-date"><i class="fas fa-calendar-alt"></i> June 01, 2025 - August 18, 2025</span>
+                            <div class="experience-logo">
+                                <img src="logos/nicf_logo.jpeg" alt="NIC Faisalabad Logo">
+                            </div>
+                            <div class="experience-header-text">
+                                <h3 class="experience-company">National Incubation Center NICF</h3>
+                                <span class="experience-date"><i class="fas fa-calendar-alt"></i> June 01, 2025 - Aug 18, 2025</span>
+                            </div>
                         </div>
-                        <p class="experience-position">Artificial Intelligence (AI) Intern</p>
+                        <p class="experience-position">AI Intern</p>
                         <div class="experience-divider"></div>
                         <ul class="experience-responsibilities">
                             <li class="experience-responsibility">
@@ -3587,48 +3654,89 @@
                     </div>
                 </div>
 
-
-                <div class="experience-card" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600">
+                <div class="experience-card" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
                     <div class="experience-card-inner">
-                        <div class="experience-icon-badge">
-                            <i class="fas fa-hand-holding-heart"></i>
-                        </div>
                         <div class="experience-header">
-                            <h3 class="experience-company">AMNESTY International - FAST Chapter</h3>
-                            <span class="experience-date"><i class="fas fa-calendar-alt"></i> June 01, 2025 - July 16, 2026</span>
+                            <div class="experience-logo">
+                                <img src="logos/amnestycfd_logo.jpg" alt="Amnesty International Logo">
+                            </div>
+                            <div class="experience-header-text">
+                                <h3 class="experience-company">AMNESTY International - FAST Chapter</h3>
+                                <span class="experience-date"><i class="fas fa-calendar-alt"></i> June 01, 2025 - July 16, 2026</span>
+                            </div>
                         </div>
                         <p class="experience-position">President</p>
                         <div class="experience-divider"></div>
                         <ul class="experience-responsibilities">
                             <li class="experience-responsibility">
                                 <i class="fas fa-circle"></i>
-                                <span>Leading the AMNESTY International chapter at FAST NUCES.</span>
+                                <span>Leading the AMNESTY International chapter at FAST NUCES. Organizing awareness campaigns and events.</span>
                             </li>
                             <li class="experience-responsibility">
                                 <i class="fas fa-circle"></i>
-                                <span>Organizing awareness campaigns and events.</span>
-                            </li>
-                            <li class="experience-responsibility">
-                                <i class="fas fa-circle"></i>
-                                <span>Advocating for human rights and social justice.</span>
-                            </li>
-                            <li class="experience-responsibility">
-                                <i class="fas fa-circle"></i>
-                                <span>Collaborating with other student organizations and community partners.</span>
+                                <span>Advocating for human rights and social justice. Collaborating with other student organizations and community partners.</span>
                             </li>
                         </ul>
                     </div>
                 </div>
 
 
-                <div class="experience-card" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
+                <div class="experience-card" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600">
                     <div class="experience-card-inner">
-                        <div class="experience-icon-badge">
-                            <i class="fas fa-crown"></i>
-                        </div>
                         <div class="experience-header">
-                            <h3 class="experience-company">entracloud (Pvt.) Ltd. Software Company</h3>
-                            <span class="experience-date"><i class="fas fa-calendar-alt"></i> July 01, 2024 - January 01, 2026</span>
+                            <div class="experience-logo">
+                                <img src="logos/fast_logo.png" alt="FAST NUCES Logo">
+                            </div>
+                            <div class="experience-header-text">
+                                <h3 class="experience-company">FAST NUCES, National University</h3>
+                                <span class="experience-date"><i class="fas fa-calendar-alt"></i> Aug 21, 2023 - July 10, 2026</span>
+                            </div>
+                        </div>
+                        <p class="experience-position">Teaching Assistant</p>
+                        <div class="experience-divider"></div>
+                        <ul class="experience-responsibilities">
+                            <li class="experience-responsibility">
+                                <i class="fas fa-circle"></i>
+                                <span>Information Security</span>
+                            </li>
+                            <li class="experience-responsibility">
+                                <i class="fas fa-circle"></i>
+                                <span>Business Math-II</span>
+                            </li>
+                            <li class="experience-responsibility">
+                                <i class="fas fa-circle"></i>
+                                <span>Theory of Automata</span>
+                            </li>
+                            <li class="experience-responsibility">
+                                <i class="fas fa-circle"></i>
+                                <span>Numerical Computing</span>
+                            </li>
+                            <li class="experience-responsibility">
+                                <i class="fas fa-circle"></i>
+                                <span>Linear Algebra</span>
+                            </li>
+                            <li class="experience-responsibility">
+                                <i class="fas fa-circle"></i>
+                                <span   >Calculus and Analytical Geometry</span>
+                            </li>
+                            <li class="experience-responsibility">
+                                <i class="fas fa-circle"></i>
+                                <span>Technical and Business Writin</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="experience-card" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="500">
+                    <div class="experience-card-inner">
+                        <div class="experience-header">
+                            <div class="experience-logo">
+                                <img src="logos/entracloud_logo.jpeg" alt="entracloud Logo">
+                            </div>
+                            <div class="experience-header-text">
+                                <h3 class="experience-company">entracloud (Pvt.) Ltd. Software Company</h3>
+                                <span class="experience-date"><i class="fas fa-calendar-alt"></i> July 01, 2024 - Jan 01, 2026</span>
+                            </div>
                         </div>
                         <p class="experience-position">Leader & Supervisor</p>
                         <div class="experience-divider"></div>
@@ -3639,11 +3747,7 @@
                             </li>
                             <li class="experience-responsibility">
                                 <i class="fas fa-circle"></i>
-                                <span>Managing programming, development, and graphic design teams.</span>
-                            </li>
-                            <li class="experience-responsibility">
-                                <i class="fas fa-circle"></i>
-                                <span>Overseeing technical strategy and implementation.</span>
+                                <span>Managing programming, development, and graphic design teams. Overseeing technical strategy and implementation.</span>
                             </li>
                             <li class="experience-responsibility">
                                 <i class="fas fa-circle"></i>
@@ -3653,58 +3757,17 @@
                     </div>
                 </div>
 
-                <div class="experience-card" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="500">
-                    <div class="experience-card-inner">
-                        <div class="experience-icon-badge">
-                            <i class="fas fa-chalkboard-teacher"></i>
-                        </div>
-                        <div class="experience-header">
-                            <h3 class="experience-company">FAST NUCES, National University</h3>
-                            <span class="experience-date"><i class="fas fa-calendar-alt"></i> August 21, 2023 - July 10, 2026</span>
-                        </div>
-                        <p class="experience-position">Teaching Assistant</p>
-                        <div class="experience-divider"></div>
-                        <ul class="experience-responsibilities">
-                            <li class="experience-responsibility">
-                                <i class="fas fa-circle"></i>
-                                <span>Information Security (Spring 2026)</span>
-                            </li>
-                            <li class="experience-responsibility">
-                                <i class="fas fa-circle"></i>
-                                <span>Business Math-II (Spring 2026)</span>
-                            </li>
-                            <li class="experience-responsibility">
-                                <i class="fas fa-circle"></i>
-                                <span>Theory of Automata (Fall 2025)</span>
-                            </li>
-                            <li class="experience-responsibility">
-                                <i class="fas fa-circle"></i>
-                                <span>Numerical Computing (Fall 2025)</span>
-                            </li>
-                            <li class="experience-responsibility">
-                                <i class="fas fa-circle"></i>
-                                <span>Calculus and Analytical Geometry (Fall 2023 & Fall 2024)</span>
-                            </li>
-                            <li class="experience-responsibility">
-                                <i class="fas fa-circle"></i>
-                                <span>Linear Algebra - LA (Spring 2025)</span>
-                            </li>
-                            <li class="experience-responsibility">
-                                <i class="fas fa-circle"></i>
-                                <span>Technical and Business Writing - TBW (Spring 2025)</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
 
                 <div class="experience-card" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="700">
                     <div class="experience-card-inner">
-                        <div class="experience-icon-badge">
-                            <i class="fas fa-graduation-cap"></i>
-                        </div>
                         <div class="experience-header">
-                            <h3 class="experience-company">LUMS NOP (Seasonal)</h3>
-                            <span class="experience-date"><i class="fas fa-calendar-alt"></i> Aug 2020 - Dec 2020</span>
+                            <div class="experience-logo">
+                                <img src="logos/lums_logo.png" alt="LUMS Logo">
+                            </div>
+                            <div class="experience-header-text">
+                                <h3 class="experience-company">LUMS NOP (Seasonal)</h3>
+                                <span class="experience-date"><i class="fas fa-calendar-alt"></i> Aug 2020 - Dec 2020</span>
+                            </div>
                         </div>
                         <p class="experience-position">National Outreach Program Scholar</p>
                         <div class="experience-divider"></div>

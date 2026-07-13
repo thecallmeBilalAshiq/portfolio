@@ -1593,126 +1593,522 @@
         }
 
         /* Education Section */
-        .timeline-container {
-            max-width: 800px;
-            margin: 0 auto;
+        .education-section {
             position: relative;
+            overflow: hidden;
+            background:
+                radial-gradient(circle at top left, rgba(108, 99, 255, 0.16), transparent 34%),
+                radial-gradient(circle at top right, rgba(67, 206, 162, 0.12), transparent 28%),
+                linear-gradient(180deg, rgba(2, 12, 27, 0.08), rgba(2, 12, 27, 0));
         }
 
-        .timeline-container::before {
+        .education-section::before {
             content: '';
             position: absolute;
-            width: 3px;
-            height: 100%;
-            background: var(--accent-gradient);
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 0;
+            inset: 0;
+            background:
+                radial-gradient(circle at 20% 20%, rgba(108, 99, 255, 0.08), transparent 25%),
+                radial-gradient(circle at 80% 30%, rgba(58, 235, 255, 0.08), transparent 22%),
+                linear-gradient(135deg, rgba(12, 18, 40, 0.3), rgba(12, 18, 40, 0.05));
+            pointer-events: none;
         }
 
-        .timeline-item {
-            display: flex;
-            justify-content: flex-end;
-            padding-right: 30px;
+        .education-section .container {
             position: relative;
-            margin-bottom: 4rem;
-            width: 50%;
-        }
-
-        .timeline-item:nth-child(even) {
-            align-self: flex-end;
-            justify-content: flex-start;
-            padding-right: 0;
-            padding-left: 30px;
-            left: 50%;
-        }
-
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background-color: var(--accent);
-            border-radius: 50%;
-            top: 20px;
-            right: -10px;
             z-index: 1;
-            box-shadow: 0 0 0 4px rgba(67, 206, 162, 0.2);
         }
 
-        .timeline-item:nth-child(even)::before {
-            right: auto;
-            left: -10px;
+        .education-title-container {
+            margin-bottom: 5.5rem;
         }
 
-        .timeline-content {
-            background-color: var(--card);
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: var(--shadow-lg);
-            transition: all 0.3s ease;
-            width: 100%;
-            max-width: 350px;
+        .education-section .section-subtitle {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.65rem;
+            padding: 0.45rem 1rem;
+            border-radius: 999px;
+            background: rgba(108, 99, 255, 0.12);
+            border: 1px solid rgba(108, 99, 255, 0.18);
+            box-shadow: 0 0 24px rgba(108, 99, 255, 0.16);
+        }
+
+        .education-main-title {
+            font-size: clamp(3rem, 6vw, 5rem);
+            letter-spacing: -0.04em;
+            line-height: 0.95;
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.25rem;
+            text-shadow: 0 0 24px rgba(108, 99, 255, 0.18);
+        }
+
+        .education-title-icon {
+            width: 3.5rem;
+            height: 3.5rem;
+            border-radius: 1.1rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(108, 99, 255, 0.95), rgba(67, 206, 162, 0.95));
+            color: white;
+            box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.14), 0 18px 38px rgba(67, 206, 162, 0.22);
             position: relative;
+            overflow: hidden;
         }
 
-        .timeline-content::before {
+        .education-title-icon::after {
             content: '';
             position: absolute;
-            width: 0;
-            height: 0;
-            border-top: 10px solid transparent;
-            border-bottom: 10px solid transparent;
-            border-left: 10px solid var(--card);
-            right: -10px;
-            top: 20px;
+            inset: -30%;
+            background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.55), transparent 70%);
+            transform: translateX(-120%) rotate(15deg);
+            animation: education-shine 4.5s ease-in-out infinite;
         }
 
-        .timeline-item:nth-child(even) .timeline-content::before {
+        @keyframes education-shine {
+            0%, 55% { transform: translateX(-120%) rotate(15deg); }
+            100% { transform: translateX(120%) rotate(15deg); }
+        }
+
+        .education-timeline {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: 2.25rem;
+            max-width: 1160px;
+            margin: 0 auto;
+            padding: 1rem 0 0.5rem;
+        }
+
+        .education-timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 4px;
+            transform: translateX(-50%);
+            background: linear-gradient(180deg, rgba(108, 99, 255, 0.15), rgba(58, 235, 255, 0.9), rgba(67, 206, 162, 0.9), rgba(255, 255, 255, 0.12));
+            box-shadow: 0 0 18px rgba(67, 206, 162, 0.35), 0 0 36px rgba(108, 99, 255, 0.16);
+            border-radius: 999px;
+        }
+
+        .education-timeline::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            transform: translateX(-50%);
+            background: radial-gradient(circle, #ffffff 0%, #7af5ff 35%, #43cea2 70%, rgba(67, 206, 162, 0) 72%);
+            box-shadow: 0 0 0 10px rgba(67, 206, 162, 0.08), 0 0 28px rgba(58, 235, 255, 0.35);
+            animation: education-node-drop 5s linear infinite;
+        }
+
+        @keyframes education-node-drop {
+            0% { top: 0; opacity: 0.25; }
+            10% { opacity: 1; }
+            50% { opacity: 1; }
+            100% { top: calc(100% - 18px); opacity: 0.25; }
+        }
+
+        .education-card {
+            position: relative;
+            width: 50%;
+            padding-right: 5rem;
+            perspective: 1800px;
+            transform-style: preserve-3d;
+        }
+
+        .education-card:nth-child(even) {
+            align-self: flex-end;
+            padding-right: 0;
+            padding-left: 5rem;
+        }
+
+        .education-card::before {
+            content: '';
+            position: absolute;
+            top: 2rem;
+            right: 1.55rem;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ffffff, #7af5ff 40%, #43cea2 85%);
+            box-shadow: 0 0 0 8px rgba(108, 99, 255, 0.08), 0 0 28px rgba(67, 206, 162, 0.32);
+            z-index: 2;
+        }
+
+        .education-card:nth-child(even)::before {
             right: auto;
-            left: -10px;
-            border-left: none;
-            border-right: 10px solid var(--card);
+            left: 1.55rem;
         }
 
-        .timeline-content:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-hover);
+        .education-card:nth-child(odd)::after,
+        .education-card:nth-child(even)::after {
+            content: '';
+            position: absolute;
+            top: 2.45rem;
+            width: 4rem;
+            height: 2px;
+            background: linear-gradient(90deg, rgba(108, 99, 255, 0.2), rgba(58, 235, 255, 0.75), rgba(67, 206, 162, 0.2));
+            box-shadow: 0 0 16px rgba(67, 206, 162, 0.3);
         }
 
-        .timeline-date {
-            display: inline-block;
-            background-color: rgba(108, 99, 255, 0.1);
-            color: var(--primary);
-            padding: 0.4rem 1rem;
-            border-radius: 50px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            margin-bottom: 1rem;
+        .education-card:nth-child(odd)::after {
+            right: 0;
         }
 
-        .timeline-title {
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
+        .education-card:nth-child(even)::after {
+            left: 0;
         }
 
-        .timeline-subtitle {
+        .education-card-inner {
+            position: relative;
+            min-height: 100%;
+            transform-style: preserve-3d;
+            transition: transform 0.85s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.35s ease;
+            border-radius: 26px;
+            filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.25));
+        }
+
+        .education-card:hover .education-card-inner,
+        .education-card.is-flipped .education-card-inner,
+        .education-card:focus-within .education-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .education-card:hover {
+            z-index: 3;
+        }
+
+        .education-card-surface {
+            position: relative;
+            min-height: 100%;
+            border-radius: 26px;
+            padding: 1.5rem;
+            background:
+                linear-gradient(145deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02)),
+                linear-gradient(180deg, rgba(10, 19, 40, 0.92), rgba(11, 24, 49, 0.94));
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow:
+                0 10px 35px rgba(2, 12, 27, 0.42),
+                inset 0 1px 0 rgba(255, 255, 255, 0.12),
+                inset 0 0 0 1px rgba(108, 99, 255, 0.12);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            overflow: hidden;
+            backface-visibility: hidden;
+        }
+
+        .education-card-surface::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(108, 99, 255, 0.16), transparent 32%, rgba(58, 235, 255, 0.12), transparent 70%);
+            opacity: 0.9;
+            pointer-events: none;
+        }
+
+        .education-card-surface::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(120deg, transparent 0%, rgba(255, 255, 255, 0.12) 45%, transparent 65%);
+            transform: translateX(-120%);
+            transition: transform 0.8s ease;
+            pointer-events: none;
+        }
+
+        .education-card:hover .education-card-surface::after,
+        .education-card.is-flipped .education-card-surface::after,
+        .education-card:focus-within .education-card-surface::after {
+            transform: translateX(120%);
+        }
+
+        .education-card-front,
+        .education-card-back {
+            position: relative;
+            z-index: 1;
+            backface-visibility: hidden;
+        }
+
+        .education-card-back {
+            position: absolute;
+            inset: 0;
+            transform: rotateY(180deg);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .education-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.1rem;
+        }
+
+        .education-identity {
             display: flex;
             align-items: center;
+            gap: 1rem;
+            min-width: 0;
+        }
+
+        .education-logo-wrap {
+            width: 4.1rem;
+            height: 4.1rem;
+            flex-shrink: 0;
+            border-radius: 1.2rem;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.96);
+            border: 1px solid rgba(255, 255, 255, 0.22);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.22), 0 0 0 1px rgba(108, 99, 255, 0.12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .education-logo-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 0.5rem;
+        }
+
+        .education-logo-fallback {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            color: #ffffff;
+            background: linear-gradient(135deg, #6c63ff, #43cea2);
+            letter-spacing: 0.08em;
+        }
+
+        .education-heading-group {
+            min-width: 0;
+        }
+
+        .education-level {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.3rem 0.75rem;
+            border-radius: 999px;
+            background: rgba(58, 235, 255, 0.12);
+            border: 1px solid rgba(58, 235, 255, 0.2);
+            color: #9defff;
+            font-size: 0.76rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
+
+        .education-heading-group h3 {
+            font-size: 1.4rem;
+            line-height: 1.15;
+            margin-bottom: 0.35rem;
+            color: #f7fbff;
+        }
+
+        .education-heading-group p {
             color: var(--muted-foreground);
-            font-weight: 500;
+            font-size: 0.92rem;
+        }
+
+        .education-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.4rem 0.75rem;
+            border-radius: 999px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #d8fbff;
+            background: rgba(67, 206, 162, 0.14);
+            border: 1px solid rgba(67, 206, 162, 0.24);
+            box-shadow: 0 0 24px rgba(67, 206, 162, 0.12);
+            white-space: nowrap;
+        }
+
+        .education-visual {
+            display: grid;
+            grid-template-columns: 88px 1fr;
+            gap: 1rem;
+            align-items: stretch;
             margin-bottom: 1rem;
         }
 
-        .timeline-subtitle i {
-            margin-right: 0.5rem;
-            color: var(--primary);
+        .education-thumb {
+            border-radius: 18px;
+            overflow: hidden;
+            position: relative;
+            min-height: 100px;
+            background: linear-gradient(135deg, rgba(108, 99, 255, 0.35), rgba(67, 206, 162, 0.18));
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12);
         }
 
-        .timeline-description {
+        .education-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .education-thumb-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(2, 12, 27, 0.06), rgba(2, 12, 27, 0.4));
+        }
+
+        .education-visual-copy {
+            padding: 0.1rem 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 0.45rem;
+        }
+
+        .education-institution {
+            color: #f7fbff;
+            font-weight: 700;
+            line-height: 1.35;
+            font-size: 1rem;
+        }
+
+        .education-summary {
             color: var(--muted-foreground);
-            font-size: 0.95rem;
+            font-size: 0.92rem;
+            line-height: 1.55;
+        }
+
+        .education-meta-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 0.75rem;
+            margin: 1.1rem 0 0.95rem;
+        }
+
+        .education-meta {
+            padding: 0.8rem 0.85rem;
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .education-meta-label {
+            display: block;
+            font-size: 0.72rem;
+            color: #a8b2d1;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 0.3rem;
+        }
+
+        .education-meta-value {
+            color: #f7fbff;
+            font-weight: 700;
+            font-size: 0.9rem;
+            line-height: 1.35;
+        }
+
+        .education-hint {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            margin-top: 1rem;
+            padding: 0.45rem 0.8rem;
+            border-radius: 999px;
+            color: #bfefff;
+            background: rgba(58, 235, 255, 0.08);
+            border: 1px solid rgba(58, 235, 255, 0.14);
+            font-size: 0.78rem;
+            font-weight: 600;
+        }
+
+        .education-hint i {
+            color: #7af5ff;
+        }
+
+        .education-back-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            align-self: flex-start;
+            padding: 0.3rem 0.8rem;
+            border-radius: 999px;
+            color: #ffffff;
+            background: linear-gradient(135deg, rgba(108, 99, 255, 0.42), rgba(67, 206, 162, 0.26));
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            font-size: 0.74rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .education-back-title {
+            margin-top: 0.9rem;
+            font-size: 1.25rem;
+            color: #f7fbff;
+        }
+
+        .education-back-copy {
+            color: var(--muted-foreground);
+            font-size: 0.92rem;
+            line-height: 1.6;
+        }
+
+        .education-back-list {
+            display: grid;
+            gap: 0.65rem;
+            margin: 1rem 0 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .education-back-list li {
+            display: flex;
+            gap: 0.55rem;
+            align-items: flex-start;
+            color: #d8e7ff;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            padding: 0.65rem 0.75rem;
+            border-radius: 14px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .education-back-list li i {
+            margin-top: 0.25rem;
+            color: #7af5ff;
+            flex-shrink: 0;
+        }
+
+        .education-testimonial {
+            margin-top: auto;
+            padding: 0.9rem 1rem;
+            border-radius: 16px;
+            background: linear-gradient(135deg, rgba(108, 99, 255, 0.14), rgba(67, 206, 162, 0.1));
+            border: 1px solid rgba(255, 255, 255, 0.09);
+            color: #f7fbff;
+            font-size: 0.9rem;
+            line-height: 1.55;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+        }
+
+        .education-testimonial span {
+            color: #9defff;
+            font-weight: 700;
         }
 
         /* Experience Section */
@@ -3023,44 +3419,62 @@
                 justify-content: center;
             }
 
-            .timeline-container::before {
-                left: 20px;
+            .education-title-container {
+                margin-bottom: 4rem;
             }
 
-            .timeline-item {
+            .education-timeline::before {
+                left: 24px;
+                transform: none;
+            }
+
+            .education-timeline::after {
+                left: 24px;
+                transform: none;
+            }
+
+            .education-card {
                 width: 100%;
-                padding-left: 50px;
+                padding-left: 3.5rem;
                 padding-right: 0;
-                justify-content: flex-start;
             }
 
-            .timeline-item:nth-child(even) {
-                left: 0;
-                padding-left: 50px;
+            .education-card:nth-child(even) {
+                align-self: stretch;
+                padding-left: 3.5rem;
             }
 
-            .timeline-item::before {
-                left: 10px;
+            .education-card::before {
+                left: 16px;
                 right: auto;
             }
 
-            .timeline-item:nth-child(even)::before {
-                left: 10px;
+            .education-card::after {
+                left: 32px;
+                width: 2.6rem;
             }
 
-            .timeline-content {
-                max-width: 100%;
+            .education-card-inner {
+                min-height: auto;
             }
 
-            .timeline-content::before {
-                left: -10px;
-                right: auto;
-                border-left: none;
-                border-right: 10px solid var(--card);
+            .education-card-surface {
+                min-height: auto;
             }
 
-            .timeline-item:nth-child(even) .timeline-content::before {
-                left: -10px;
+            .education-card-back {
+                position: relative;
+                inset: auto;
+                transform: rotateY(180deg);
+                margin-top: -100%;
+            }
+
+            .education-visual {
+                grid-template-columns: 1fr;
+            }
+
+            .education-meta-grid {
+                grid-template-columns: 1fr;
             }
 
             .contact-grid {
@@ -3164,6 +3578,60 @@
 
             .experience-date {
                 margin-top: 0.5rem;
+            }
+
+            .education-main-title {
+                gap: 0.75rem;
+            }
+
+            .education-title-icon {
+                width: 3rem;
+                height: 3rem;
+                border-radius: 1rem;
+            }
+
+            .education-card {
+                padding-left: 3rem;
+            }
+
+            .education-card:nth-child(even) {
+                padding-left: 3rem;
+            }
+
+            .education-card-surface {
+                padding: 1.1rem;
+                border-radius: 22px;
+            }
+
+            .education-card-header {
+                flex-direction: column;
+            }
+
+            .education-chip {
+                width: fit-content;
+            }
+
+            .education-logo-wrap {
+                width: 3.5rem;
+                height: 3.5rem;
+                border-radius: 1rem;
+            }
+
+            .education-heading-group h3 {
+                font-size: 1.2rem;
+            }
+
+            .education-thumb {
+                min-height: 88px;
+            }
+
+            .education-back-title {
+                font-size: 1.1rem;
+            }
+
+            .education-back-list li,
+            .education-testimonial {
+                font-size: 0.85rem;
             }
         }
 
@@ -3501,66 +3969,252 @@
     </section>
 
     <!-- ================================ Education Section -->
-    <section id="education" class="section section-bg-muted">
+    <section id="education" class="section section-bg-muted education-section">
         <div class="container">
-            <div class="section-title-container">
-                <span class="section-subtitle">Education & Learning</span>
-                <p class="section-description">My academic background and educational qualifications.</p>
+            <div class="section-title-container education-title-container" data-aos="fade-up" data-aos-duration="900">
+                <span class="section-subtitle"><i class="fas fa-route"></i> Academic Timeline</span>
+                <!-- <h2 class="section-title education-main-title">
+                    <span class="education-title-icon"><i class="fas fa-graduation-cap"></i></span>
+                    Education
+                </h2> -->
+                <p class="section-description">
+                    A visual timeline of the institutions, foundations, and milestones that shaped my engineering journey.
+                </p>
             </div>
 
-            <div class="timeline-container">
-                <div class="timeline-item" data-aos="fade-right" data-aos-duration="1000">
-                    <div class="timeline-content">
-                        <span class="timeline-date"><i class="fas fa-calendar-alt"></i> 2022 - 2026</span>
-                        <h3 class="timeline-title">BSCS - Bachelor of Science in Computer Science</h3>
-                        <div class="timeline-subtitle">
-                            <i class="fas fa-graduation-cap"></i> FAST National University of Computer and Emerging
-                            Science
-                        </div>
-                        <p class="timeline-description">
-                            Computer Science graduate passionate about building scalable software, AI-powered applications, and modern web solutions.
-                        </p>
-                    </div>
-                </div>
+            <div class="education-timeline" data-education-timeline>
+                <article class="education-card" tabindex="0" data-education-card data-aos="fade-right" data-aos-duration="1000">
+                    <div class="education-card-inner">
+                        <div class="education-card-surface education-card-front">
+                            <div class="education-card-header">
+                                <div class="education-identity">
+                                    <div class="education-logo-wrap">
+                                        <img src="logos/fast_logo.png" alt="FAST National University logo">
+                                    </div>
+                                    <div class="education-heading-group">
+                                        <span class="education-level">2022 - 2026</span>
+                                        <h3>BSCS</h3>
+                                        <p>Bachelor of Science in Computer Science</p>
+                                    </div>
+                                </div>
+                                <span class="education-chip"><i class="fas fa-location-dot"></i> FAST NUCES</span>
+                            </div>
 
-                <div class="timeline-item" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
-                    <div class="timeline-content">
-                        <span class="timeline-date"><i class="fas fa-calendar-alt"></i> 2021 - 2022</span>
-                        <h3 class="timeline-title">BSIT Information Technology</h3>
-                        <div class="timeline-subtitle">
-                            <i class="fas fa-graduation-cap"></i> GPA: 3.91
-                        </div>
-                        <p class="timeline-description">
-                            Completed 2 semesters with a focus on IT fundamentals and programming concepts.
-                        </p>
-                    </div>
-                </div>
+                            <div class="education-visual">
+                                <div class="education-thumb">
+                                    <img src="logos/fastcfd_image.jpeg" alt="FAST university campus" loading="lazy" referrerpolicy="no-referrer">
+                                    <div class="education-thumb-overlay"></div>
+                                </div>
+                                <div class="education-visual-copy">
+                                    <p class="education-institution">FAST National University of Computer and Emerging Sciences</p>
+                                    <p class="education-summary">Computer science training centered on AI systems, scalable software, databases, and modern web engineering.</p>
+                                </div>
+                            </div>
 
-                <div class="timeline-item" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="400">
-                    <div class="timeline-content">
-                        <span class="timeline-date"><i class="fas fa-calendar-alt"></i> 2019 - 2021</span>
-                        <h3 class="timeline-title">FSc. Pre-Engineering</h3>
-                        <div class="timeline-subtitle">
-                            <i class="fas fa-graduation-cap"></i> Govt. Graduate Degree Boys College, Chowk Azam
-                        </div>
-                        <p class="timeline-description">
-                            Achieved 90% marks with a focus on mathematics, physics, and chemistry.
-                        </p>
-                    </div>
-                </div>
+                            <div class="education-meta-grid">
+                                <div class="education-meta">
+                                    <span class="education-meta-label">Focus</span>
+                                    <span class="education-meta-value">AI, systems, software design</span>
+                                </div>
+                                <div class="education-meta">
+                                    <span class="education-meta-label">Strength</span>
+                                    <span class="education-meta-value">Problem solving at scale</span>
+                                </div>
+                                <div class="education-meta">
+                                    <span class="education-meta-label">Outcome</span>
+                                    <span class="education-meta-value">Engineering discipline</span>
+                                </div>
+                            </div>
 
-                <div class="timeline-item" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="600">
-                    <div class="timeline-content">
-                        <span class="timeline-date"><i class="fas fa-calendar-alt"></i> 2019</span>
-                        <h3 class="timeline-title">Matriculation - Science</h3>
-                        <div class="timeline-subtitle">
-                            <i class="fas fa-graduation-cap"></i> Millat Public High School, Chowk Azam
                         </div>
-                        <p class="timeline-description">
-                            Achieved 96% marks with distinction in science subjects.
-                        </p>
+
+                        <div class="education-card-surface education-card-back">
+                            <span class="education-back-label">Highlights</span>
+                            <h4 class="education-back-title">What FAST gave me</h4>
+                            <p class="education-back-copy">A rigorous CS foundation that pushed me toward clean architecture, disciplined coding, and practical AI development.</p>
+                            <ul class="education-back-list">
+                                <li><i class="fas fa-check-circle"></i><span>Built AI and software projects with stronger architecture decisions.</span></li>
+                                <li><i class="fas fa-check-circle"></i><span>Strengthened algorithms, data structures, and database thinking.</span></li>
+                                <li><i class="fas fa-check-circle"></i><span>Developed a sharper instinct for production-minded engineering.</span></li>
+                            </ul>
+                            <p class="education-testimonial"><span>FAST shaped the way I build:</span> faster, cleaner, and with more intent.</p>
+                        </div>
                     </div>
-                </div>
+                </article>
+
+                <article class="education-card" tabindex="0" data-education-card data-aos="fade-left" data-aos-duration="1000" data-aos-delay="180">
+                    <div class="education-card-inner">
+                        <div class="education-card-surface education-card-front">
+                            <div class="education-card-header">
+                                <div class="education-identity">
+                                    <div class="education-logo-wrap">
+                                        <img src="logos/qau_logo.png" alt="QAU logo">
+                                    </div>
+                                    <div class="education-heading-group">
+                                        <span class="education-level">2021 - 2022</span>
+                                        <h3>BSIT</h3>
+                                        <p>Information Technology</p>
+                                    </div>
+                                </div>
+                                <span class="education-chip"><i class="fas fa-location-dot"></i> QAU, Islamabad</span>
+                            </div>
+
+                            <div class="education-visual">
+                                <div class="education-thumb">
+                                        <img src="logos/qau_image.jpeg" alt="QAU image">
+                                    <div class="education-thumb-overlay"></div>
+                                </div>
+                                <div class="education-visual-copy">
+                                    <p class="education-institution">IT fundamentals with an early emphasis on programming, digital systems, and technical problem solving.</p>
+                                    <p class="education-summary">This chapter reinforced the habits that later made AI and software work feel systematic and manageable.</p>
+                                </div>
+                            </div>
+
+                            <div class="education-meta-grid">
+                                <div class="education-meta">
+                                    <span class="education-meta-label">Key Result</span>
+                                    <span class="education-meta-value">GPA: 3.91</span>
+                                </div>
+                                <div class="education-meta">
+                                    <span class="education-meta-label">Built</span>
+                                    <span class="education-meta-value">Programming confidence</span>
+                                </div>
+                                <div class="education-meta">
+                                    <span class="education-meta-label">Shift</span>
+                                    <span class="education-meta-value">From interest to practice</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="education-card-surface education-card-back">
+                            <span class="education-back-label">Highlights</span>
+                            <h4 class="education-back-title">What this phase built</h4>
+                            <p class="education-back-copy">A practical runway into engineering, especially in the core habits that support long-term growth.</p>
+                            <ul class="education-back-list">
+                                <li><i class="fas fa-check-circle"></i><span>Strengthened the logic, debugging, and analytical habits behind code quality.</span></li>
+                                <li><i class="fas fa-check-circle"></i><span>Built confidence with core IT concepts and structured problem solving.</span></li>
+                                <li><i class="fas fa-check-circle"></i><span>Created the momentum that later carried into CS specialization.</span></li>
+                            </ul>
+                            <p class="education-testimonial"><span>It was the bridge phase:</span> where curiosity became technical direction.</p>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="education-card" tabindex="0" data-education-card data-aos="fade-right" data-aos-duration="1000" data-aos-delay="360">
+                    <div class="education-card-inner">
+                        <div class="education-card-surface education-card-front">
+                            <div class="education-card-header">
+                                <div class="education-identity">
+                                    <div class="education-logo-wrap">
+                                                <img src="logos/college_logo.jpg" alt="BISE DGK logo">
+
+                                    </div>
+                                    <div class="education-heading-group">
+                                        <span class="education-level">2019 - 2021</span>
+                                        <h3>FSc. Pre-Engineering</h3>
+                                        <p>Govt. Graduate Degree Boys College, Chowk Azam</p>
+                                        </div>
+                                </div>
+                                <span class="education-chip"><i class="fas fa-location-dot"></i> BISE D.G.K</span>
+                            </div>
+
+                            <div class="education-visual">
+                                <div class="education-thumb">
+                                    <img src="https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?w=420&h=280&fit=crop" alt="College campus building" loading="lazy" referrerpolicy="no-referrer">
+                                    <div class="education-thumb-overlay"></div>
+                                </div>
+                                <div class="education-visual-copy">
+                                    <p class="education-institution">Govt. Graduate Degree Boys College, Chowk Azam</p>
+                                    <p class="education-summary">A strong pre-engineering phase built on mathematics, physics, chemistry, and disciplined study habits.</p>
+                                </div>
+                            </div>
+
+                            <div class="education-meta-grid">
+                                <div class="education-meta">
+                                    <span class="education-meta-label">Result</span>
+                                    <span class="education-meta-value">90% marks</span>
+                                </div>
+                                <div class="education-meta">
+                                    <span class="education-meta-label">Core Subjects</span>
+                                    <span class="education-meta-value">Math, Physics, Chemistry</span>
+                                </div>
+                                <div class="education-meta">
+                                    <span class="education-meta-label">Learning</span>
+                                    <span class="education-meta-value">Quantitative reasoning</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="education-card-surface education-card-back">
+                            <span class="education-back-label">Highlights</span>
+                            <h4 class="education-back-title">What I took from college</h4>
+                            <p class="education-back-copy">This is where analytical thinking became a habit. The subjects were demanding, but they sharpened my reasoning and study discipline.</p>
+                            <ul class="education-back-list">
+                                <li><i class="fas fa-check-circle"></i><span>Developed the foundation needed for engineering-level problem solving.</span></li>
+                                <li><i class="fas fa-check-circle"></i><span>Strengthened consistency through a heavy science curriculum.</span></li>
+                                <li><i class="fas fa-check-circle"></i><span>Built the confidence to move into technical higher education.</span></li>
+                            </ul>
+                            <p class="education-testimonial"><span>A formative stage:</span> it taught me how to think under pressure.</p>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="education-card" tabindex="0" data-education-card data-aos="fade-left" data-aos-duration="1000" data-aos-delay="540">
+                    <div class="education-card-inner">
+                        <div class="education-card-surface education-card-front">
+                            <div class="education-card-header">
+                                <div class="education-identity">
+                                    <div class="education-logo-wrap">
+                                                <img src="logos/bisedgk_logo.jpeg" alt="BISE DGK logo">                                    </div>
+                                    <div class="education-heading-group">
+                                        <span class="education-level">2017 - 2019</span>
+                                        <h3>Matriculation - Science</h3>
+                                        <p>Millat Public High School, Chowk Azam</p>
+                                    </div>
+                                </div>
+                                <span class="education-chip"><i class="fas fa-location-dot"></i> BISE D.G.K</span>
+                            </div>
+
+                            <div class="education-visual">
+                                <div class="education-thumb">
+                                    <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=420&h=280&fit=crop" alt="School building and students" loading="lazy" referrerpolicy="no-referrer">
+                                    <div class="education-thumb-overlay"></div>
+                                </div>
+                                <div class="education-visual-copy">
+                                    <p class="education-institution">Millat Public High School, Chowk Azam</p>
+                                    <p class="education-summary">The starting point of my academic journey, where discipline, consistency, and science fundamentals took root.</p>
+                                </div>
+                            </div>
+
+                            <div class="education-meta-grid">
+                                <div class="education-meta">
+                                    <span class="education-meta-label">Result</span>
+                                    <span class="education-meta-value">96.6% marks</span>
+                                </div>
+                                <div class="education-meta">
+                                    <span class="education-meta-label">Achievement</span>
+                                    <span class="education-meta-value">Distinction in science</span>
+                                </div>
+                                <div class="education-meta">
+                                    <span class="education-meta-label">Value</span>
+                                    <span class="education-meta-value">Consistency and focus</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="education-card-surface education-card-back">
+                            <span class="education-back-label">Highlights</span>
+                            <h4 class="education-back-title">Why this matters</h4>
+                            <p class="education-back-copy">My earliest school years built the habits that make everything else possible: effort, focus, and the ability to keep showing up.</p>
+                            <ul class="education-back-list">
+                                <li><i class="fas fa-check-circle"></i><span>Formed the academic discipline that later carried through college and university.</span></li>
+                                <li><i class="fas fa-check-circle"></i><span>Established a strong science foundation for later engineering study.</span></li>
+                                <li><i class="fas fa-check-circle"></i><span>Proved that consistency can compound into high performance.</span></li>
+                            </ul>
+                            <p class="education-testimonial"><span>My first milestone:</span> a reminder that strong fundamentals always matter.</p>
+                        </div>
+                    </div>
+                </article>
             </div>
         </div>
     </section>
@@ -3681,6 +4335,37 @@
                 </div>
 
 
+
+                <div class="experience-card" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="500">
+                    <div class="experience-card-inner">
+                        <div class="experience-header">
+                            <div class="experience-logo">
+                                <img src="logos/entracloud_logo.jpeg" alt="entracloud Logo">
+                            </div>
+                            <div class="experience-header-text">
+                                <h3 class="experience-company">entracloud (Pvt.) Ltd. IT Company</h3>
+                                <span class="experience-date"><i class="fas fa-calendar-alt"></i> July 01, 2024 - Jan 01, 2026</span>
+                            </div>
+                        </div>
+                        <p class="experience-position">Leader & Supervisor</p>
+                        <div class="experience-divider"></div>
+                        <ul class="experience-responsibilities">
+                            <li class="experience-responsibility">
+                                <i class="fas fa-circle"></i>
+                                <span>Responsible for all technology-based matters of the company.</span>
+                            </li>
+                            <li class="experience-responsibility">
+                                <i class="fas fa-circle"></i>
+                                <span>Managing programming, development, and graphic design teams. Overseeing technical strategy and implementation.</span>
+                            </li>
+                            <li class="experience-responsibility">
+                                <i class="fas fa-circle"></i>
+                                <span>Leading technology innovation and digital transformation initiatives.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
                 <div class="experience-card" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600">
                     <div class="experience-card-inner">
                         <div class="experience-header">
@@ -3727,36 +4412,6 @@
                     </div>
                 </div>
 
-                <div class="experience-card" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="500">
-                    <div class="experience-card-inner">
-                        <div class="experience-header">
-                            <div class="experience-logo">
-                                <img src="logos/entracloud_logo.jpeg" alt="entracloud Logo">
-                            </div>
-                            <div class="experience-header-text">
-                                <h3 class="experience-company">entracloud (Pvt.) Ltd. Software Company</h3>
-                                <span class="experience-date"><i class="fas fa-calendar-alt"></i> July 01, 2024 - Jan 01, 2026</span>
-                            </div>
-                        </div>
-                        <p class="experience-position">Leader & Supervisor</p>
-                        <div class="experience-divider"></div>
-                        <ul class="experience-responsibilities">
-                            <li class="experience-responsibility">
-                                <i class="fas fa-circle"></i>
-                                <span>Responsible for all technology-based matters of the company.</span>
-                            </li>
-                            <li class="experience-responsibility">
-                                <i class="fas fa-circle"></i>
-                                <span>Managing programming, development, and graphic design teams. Overseeing technical strategy and implementation.</span>
-                            </li>
-                            <li class="experience-responsibility">
-                                <i class="fas fa-circle"></i>
-                                <span>Leading technology innovation and digital transformation initiatives.</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
 
                 <div class="experience-card" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="700">
                     <div class="experience-card-inner">
@@ -3772,17 +4427,22 @@
                         <p class="experience-position">National Outreach Program Scholar</p>
                         <div class="experience-divider"></div>
                         <ul class="experience-responsibilities">
+
                             <li class="experience-responsibility">
                                 <i class="fas fa-circle"></i>
-                                <span>Selected for the highly prestigious LUMS NOP from a competitive national pool of applicants.</span>
+                                <span>SAT Score - 1260 / 1600</span>
                             </li>
                             <li class="experience-responsibility">
                                 <i class="fas fa-circle"></i>
-                                <span>Completed intensive academic preparation focusing on advanced Mathematics, SAT concepts, and analytical English.</span>
+                                <span>Selected for the prestigious LUMS NOP from a competitive national applicant pool.</span>
                             </li>
                             <li class="experience-responsibility">
                                 <i class="fas fa-circle"></i>
-                                <span>Engaged in rigorous training and structured mentorship, refining exam strategies and logical reasoning.</span>
+                                <span>Completed intensive training in Mathematics, SAT, and analytical English.</span>
+                            </li>
+                            <li class="experience-responsibility">
+                                <i class="fas fa-circle"></i>
+                                <span>Strengthened logical reasoning, exam strategies, and problem-solving through structured mentorship.</span>
                             </li>
                         </ul>
                     </div>
@@ -4479,6 +5139,45 @@
             once: true,
             offset: 100,
             duration: 800
+        });
+
+        // Education timeline flip behavior
+        const educationCards = document.querySelectorAll('[data-education-card]');
+        const isTouchDevice = window.matchMedia('(hover: none), (pointer: coarse)').matches;
+
+        function resetEducationCards(exceptCard = null) {
+            educationCards.forEach(card => {
+                if (card !== exceptCard) {
+                    card.classList.remove('is-flipped');
+                }
+            });
+        }
+
+        educationCards.forEach(card => {
+            card.addEventListener('click', () => {
+                if (!isTouchDevice) {
+                    return;
+                }
+
+                const shouldFlip = !card.classList.contains('is-flipped');
+                resetEducationCards(card);
+                card.classList.toggle('is-flipped', shouldFlip);
+            });
+
+            card.addEventListener('keydown', event => {
+                if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    const shouldFlip = !card.classList.contains('is-flipped');
+                    resetEducationCards(card);
+                    card.classList.toggle('is-flipped', shouldFlip);
+                }
+            });
+        });
+
+        document.addEventListener('click', event => {
+            if (isTouchDevice && !event.target.closest('[data-education-card]')) {
+                resetEducationCards();
+            }
         });
 
         // Particles.js

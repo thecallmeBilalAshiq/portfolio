@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Poppins:wght@300;400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800&display=swap"
         rel="stylesheet">
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -883,20 +883,60 @@
 
         /* About Section */
         #about.section {
-            padding: 3.5rem 0;
+            padding: 5rem 0;
+            position: relative;
+            overflow: hidden;
         }
 
+        /* Animated background orbs for about section */
+        .about-bg-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            pointer-events: none;
+            z-index: 0;
+        }
+        .about-bg-orb-1 {
+            width: 400px; height: 400px;
+            background: radial-gradient(circle, rgba(108,99,255,0.12) 0%, transparent 70%);
+            top: -10%; left: -5%;
+            animation: aboutOrbDrift1 15s ease-in-out infinite alternate;
+        }
+        .about-bg-orb-2 {
+            width: 350px; height: 350px;
+            background: radial-gradient(circle, rgba(67,206,162,0.1) 0%, transparent 70%);
+            bottom: -5%; right: -5%;
+            animation: aboutOrbDrift2 18s ease-in-out infinite alternate;
+        }
+        .about-bg-orb-3 {
+            width: 250px; height: 250px;
+            background: radial-gradient(circle, rgba(255,101,132,0.08) 0%, transparent 70%);
+            top: 40%; left: 50%;
+            animation: aboutOrbDrift3 12s ease-in-out infinite alternate;
+        }
+        @keyframes aboutOrbDrift1 { 0%{transform:translate(0,0) scale(1)} 100%{transform:translate(40px,30px) scale(1.15)} }
+        @keyframes aboutOrbDrift2 { 0%{transform:translate(0,0) scale(1)} 100%{transform:translate(-30px,-40px) scale(1.1)} }
+        @keyframes aboutOrbDrift3 { 0%{transform:translate(0,0) scale(1)} 100%{transform:translate(20px,-20px) scale(1.2)} }
+
+        .dark .about-bg-orb-1 { background: radial-gradient(circle, rgba(108,99,255,0.08) 0%, transparent 70%); }
+        .dark .about-bg-orb-2 { background: radial-gradient(circle, rgba(67,206,162,0.06) 0%, transparent 70%); }
+        .dark .about-bg-orb-3 { background: radial-gradient(circle, rgba(255,101,132,0.05) 0%, transparent 70%); }
+
         #about .section-title-container {
-            margin-bottom: 2rem;
+            margin-bottom: 3rem;
+            position: relative;
+            z-index: 1;
         }
 
         .about-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2.5rem;
-            align-items: flex-start;
-            max-width: 1000px;
+            grid-template-columns: 340px 1fr;
+            gap: 3rem;
+            align-items: center;
+            max-width: 1050px;
             margin: 0 auto;
+            position: relative;
+            z-index: 1;
         }
 
         .about-image-container {
@@ -908,73 +948,239 @@
 
         .about-image-wrapper {
             position: relative;
-            width: 320px;
-            height: 320px;
+            width: 300px;
+            height: 360px;
             max-width: 100%;
-            aspect-ratio: 1 / 1;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        /* Animated border glow around image */
+        .about-image-wrapper::before {
+            content: '';
+            position: absolute;
+            inset: -3px;
+            border-radius: 22px;
+            background: linear-gradient(135deg, #6c63ff, #43cea2, #ff6584, #6c63ff);
+            background-size: 300% 300%;
+            animation: aboutImgBorderGlow 4s ease-in-out infinite;
+            z-index: -1;
+        }
+        @keyframes aboutImgBorderGlow {
+            0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%}
+        }
+
+        .about-image-wrapper::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 20px;
+            background: linear-gradient(180deg, transparent 60%, rgba(10,25,47,0.7) 100%);
+            z-index: 2;
+            pointer-events: none;
         }
 
         .about-image-bg {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: var(--accent-gradient);
-            border-radius: 16px;
-            transform: rotate(-6deg);
-            z-index: 0;
-            opacity: 0.15;
-            transition: all 0.3s ease;
-        }
-
-        .about-image-wrapper:hover .about-image-bg {
-            transform: rotate(0deg) scale(1.05);
+            display: none;
         }
 
         .about-image {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            border-radius: 16px;
+            border-radius: 20px;
             position: relative;
             z-index: 1;
-            box-shadow: var(--shadow-lg);
-            border: 2px solid var(--border);
-            transition: all 0.3s ease;
+            transition: transform 0.6s cubic-bezier(0.23,1,0.32,1);
         }
 
         .about-image-wrapper:hover .about-image {
-            border-color: var(--primary);
+            transform: scale(1.05);
         }
 
         .about-content {
             position: relative;
         }
 
+        /* === HEADING === */
         .about-heading {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 1.25rem;
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
             position: relative;
             display: inline-block;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            background: linear-gradient(90deg, #6c63ff, #43cea2, #ff6584, #6c63ff);
+            background-size: 300% 100%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: aboutHeadGrad 4s ease-in-out infinite;
+            filter: drop-shadow(0 0 6px rgba(108,99,255,0.3));
+        }
+        @keyframes aboutHeadGrad {
+            0%,100%{background-position:0% 50%} 50%{background-position:100% 50%}
+        }
+
+        .about-heading::before {
+            content: attr(data-text);
+            position: absolute;
+            top: 2px; left: 2px;
+            background: linear-gradient(90deg, #ff6584, #6c63ff);
+            background-size: 300% 100%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            z-index: -1;
+            opacity: 0.4;
+            animation: aboutGlitch 6s ease-in-out infinite;
+        }
+        @keyframes aboutGlitch {
+            0%,30%,100%{transform:translate(0,0);opacity:0}
+            82%{transform:translate(0,0);opacity:0}
+            84%{transform:translate(-2px,1px);opacity:0.7}
+            86%{transform:translate(2px,-1px);opacity:0.3}
+            88%{transform:translate(0,0);opacity:0}
         }
 
         .about-heading::after {
             content: '';
             position: absolute;
-            width: 40px;
+            width: 60%;
             height: 3px;
-            background: var(--accent-gradient);
+            background: linear-gradient(90deg, #6c63ff, #43cea2, transparent);
             bottom: -6px;
             left: 0;
             border-radius: 2px;
+            box-shadow: 0 0 8px rgba(108,99,255,0.4);
         }
 
-        .about-text {
-            color: var(--muted-foreground);
-            font-size: 0.95rem;
-            line-height: 1.6;
-            margin-bottom: 1.25rem;
+        /* === UNIFIED TEXT BLOCK === */
+        .about-text-block {
+            position: relative;
+            padding: 1.75rem 2rem;
+            background: linear-gradient(135deg, rgba(108,99,255,0.04) 0%, rgba(67,206,162,0.02) 50%, rgba(255,101,132,0.04) 100%);
+            border: 1px solid rgba(108,99,255,0.12);
+            border-radius: 16px;
+            overflow: hidden;
+            backdrop-filter: blur(8px);
+            transition: all 0.4s ease;
         }
+        .dark .about-text-block {
+            background: linear-gradient(135deg, rgba(108,99,255,0.07) 0%, rgba(67,206,162,0.04) 50%, rgba(255,101,132,0.07) 100%);
+            border-color: rgba(108,99,255,0.2);
+        }
+        .about-text-block:hover {
+            border-color: rgba(108,99,255,0.3);
+            box-shadow: 0 0 25px rgba(108,99,255,0.08), 0 0 50px rgba(67,206,162,0.04);
+        }
+        .about-text-block .about-scanline {
+            position: absolute; top: -5%; left: 0; width: 100%; height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(108,99,255,0.5), rgba(67,206,162,0.5), transparent);
+            z-index: 3; pointer-events: none;
+            animation: aboutScan 5s ease-in-out infinite;
+            box-shadow: 0 0 12px rgba(108,99,255,0.25);
+        }
+        @keyframes aboutScan { 0%{top:-5%;opacity:0} 10%{opacity:1} 90%{opacity:1} 100%{top:105%;opacity:0} }
+
+        .about-corner-tl,.about-corner-tr,.about-corner-bl,.about-corner-br {
+            position: absolute; width: 14px; height: 14px; z-index: 2; opacity: 0.4; transition: opacity 0.4s ease;
+        }
+        .about-text-block:hover .about-corner-tl,.about-text-block:hover .about-corner-tr,
+        .about-text-block:hover .about-corner-bl,.about-text-block:hover .about-corner-br { opacity: 1; }
+        .about-corner-tl { top:6px;left:6px;border-top:2px solid #6c63ff;border-left:2px solid #6c63ff; }
+        .about-corner-tr { top:6px;right:6px;border-top:2px solid #43cea2;border-right:2px solid #43cea2; }
+        .about-corner-bl { bottom:6px;left:6px;border-bottom:2px solid #43cea2;border-left:2px solid #43cea2; }
+        .about-corner-br { bottom:6px;right:6px;border-bottom:2px solid #ff6584;border-right:2px solid #ff6584; }
+
+        .about-status-dot {
+            display: inline-flex; align-items: center; gap: 0.4rem;
+            font-family: 'Fira Code','Courier New',monospace; font-size: 0.7rem;
+            color: #43cea2; margin-bottom: 0.75rem; letter-spacing: 1px; text-transform: uppercase;
+        }
+        .about-status-dot::before {
+            content: ''; width: 6px; height: 6px; background: #43cea2; border-radius: 50%;
+            box-shadow: 0 0 6px #43cea2; animation: aboutDotPulse 2s ease-in-out infinite;
+        }
+        @keyframes aboutDotPulse { 0%,100%{box-shadow:0 0 6px #43cea2;transform:scale(1)} 50%{box-shadow:0 0 12px #43cea2;transform:scale(1.4)} }
+
+        .about-code-bracket {
+            font-family: 'Fira Code','Courier New',monospace; font-size: 0.7rem;
+            color: rgba(108,99,255,0.35); letter-spacing: 1px; display: block; margin-bottom: 0.25rem;
+        }
+        .dark .about-code-bracket { color: rgba(108,99,255,0.55); }
+
+        .about-text {
+            color: var(--muted-foreground); font-size: 0.98rem; line-height: 1.8; margin-bottom: 0.75rem;
+        }
+        .about-text:last-of-type { margin-bottom: 0; }
+        .about-text .about-highlight { color: var(--primary); font-weight: 600; }
+        .about-text .about-accent { color: #43cea2; font-weight: 600; }
+        .about-text .about-secondary { color: var(--secondary); font-weight: 600; }
+
+        /* Hide old elements */
+        .about-particles-bg, .about-data-stream, .about-text-wrapper { display: none; }
+
+        /* === PHOTO CAROUSEL === */
+        .about-photo-carousel {
+            position: relative; margin-top: 3rem; max-width: 1050px;
+            margin-left: auto; margin-right: auto; z-index: 1;
+        }
+        .about-carousel-title {
+            text-align: center; font-size: 1.3rem; font-weight: 700; margin-bottom: 1.5rem;
+            background: linear-gradient(90deg, #6c63ff, #43cea2);
+            -webkit-background-clip: text; background-clip: text; color: transparent;
+        }
+        .about-carousel-track-wrapper {
+            position: relative; overflow: hidden; border-radius: 16px; padding: 0.5rem 0;
+        }
+        .about-carousel-track {
+            display: flex; gap: 1.25rem;
+            animation: aboutCarouselScroll 30s linear infinite; width: max-content;
+        }
+        .about-carousel-track:hover { animation-play-state: paused; }
+        @keyframes aboutCarouselScroll { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+
+        .about-carousel-item {
+            flex-shrink: 0; width: 220px; height: 280px; border-radius: 14px;
+            overflow: hidden; position: relative; border: 2px solid rgba(108,99,255,0.15);
+            transition: all 0.4s cubic-bezier(0.23,1,0.32,1); cursor: pointer;
+        }
+        .about-carousel-item:hover {
+            transform: translateY(-8px) scale(1.03); border-color: rgba(108,99,255,0.5);
+            box-shadow: 0 15px 40px rgba(108,99,255,0.2), 0 0 20px rgba(67,206,162,0.1);
+        }
+        .about-carousel-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+        .about-carousel-item:hover img { transform: scale(1.1); }
+        .about-carousel-item::after {
+            content: ''; position: absolute; inset: 0;
+            background: linear-gradient(180deg, transparent 50%, rgba(10,25,47,0.5) 100%);
+            pointer-events: none; transition: opacity 0.3s ease;
+        }
+        .about-carousel-item:hover::after { opacity: 0.4; }
+
+        .about-carousel-track-wrapper::before,.about-carousel-track-wrapper::after {
+            content: ''; position: absolute; top: 0; width: 60px; height: 100%; z-index: 2; pointer-events: none;
+        }
+        .about-carousel-track-wrapper::before { left: 0; background: linear-gradient(to right, var(--background), transparent); }
+        .about-carousel-track-wrapper::after { right: 0; background: linear-gradient(to left, var(--background), transparent); }
+
+        .about-glitch-burst { animation: aboutGlitchBurst 0.2s steps(2) !important; }
+        @keyframes aboutGlitchBurst {
+            0%{transform:translate(0)}
+            25%{transform:translate(-3px,2px) skewX(-2deg)}
+            50%{transform:translate(3px,-1px) skewX(1deg)}
+            75%{transform:translate(-1px,1px)}
+            100%{transform:translate(0)}
+        }
+
+        @media (max-width: 768px) {
+            .about-heading { font-size: 1.6rem; }
+            .about-text-block { padding: 1.25rem 1.5rem; }
+            .about-carousel-item { width: 180px; height: 230px; }
+        }
+
 
         .about-cards {
             display: grid;
@@ -3389,11 +3595,13 @@
 
             .about-grid {
                 grid-template-columns: 1fr;
-                gap: 3rem;
+                gap: 2rem;
             }
 
             .about-image-wrapper {
                 margin: 0 auto;
+                width: 260px;
+                height: 320px;
             }
 
             .about-content {
@@ -3401,8 +3609,14 @@
             }
 
             .about-heading::after {
+                width: 80%;
                 left: 50%;
                 transform: translateX(-50%);
+            }
+
+            .about-text-block {
+                padding: 1.25rem;
+                text-align: left;
             }
 
             .skills-title {
@@ -3801,6 +4015,11 @@
 
     <!-- ====================================  About Section  =========================================-->
     <section id="about" class="section">
+        <!-- Animated background orbs -->
+        <div class="about-bg-orb about-bg-orb-1"></div>
+        <div class="about-bg-orb about-bg-orb-2"></div>
+        <div class="about-bg-orb about-bg-orb-3"></div>
+
         <div class="container">
             <div class="section-title-container">
                 <span class="section-subtitle"> <b> About Me </b> </span>
@@ -3812,28 +4031,71 @@
             <div class="about-grid">
                 <div class="about-image-container" data-aos="fade-right" data-aos-duration="1000">
                     <div class="about-image-wrapper">
-                        <div class="about-image-bg"></div>
                         <img src="https://avatars.githubusercontent.com/u/138978969" alt="Muhammad Bilal Ashiq"
                             class="about-image">
                     </div>
                 </div>
 
                 <div class="about-content" data-aos="fade-left" data-aos-duration="1000">
-                    <h3 class="about-heading">Who am I?</h3>
-                    <p class="about-text">
-                        I am a passionate software engineer and researcher with a deep focus on Artificial Intelligence
-                        and Machine Learning. Currently, I specialize in building intelligent, data-driven systems,
-                        training deep learning neural architectures, and developing robust, full-scale software
-                        applications that solve complex, real-world problems.
-                    </p>
-                    <p class="about-text">
-                        With experience spanning from AI/ML development (including RAG diagnostics and transformer
-                        chatbots) to core software engineering, I combine solid system design practices with
-                        cutting-edge academic AI research. I am dedicated to writing clean, high-performance, and
-                        maintainable code that bridges the gap between state-of-the-art AI models and user-centric
-                    </p>
+                    <h3 class="about-heading" data-text="Who am I?">Who am I?</h3>
+                    <div class="about-text-block">
+                        <div class="about-corner-tl"></div>
+                        <div class="about-corner-tr"></div>
+                        <div class="about-corner-bl"></div>
+                        <div class="about-corner-br"></div>
+                        <div class="about-scanline"></div>
+                        <span class="about-code-bracket">// core.profile</span>
+                        <span class="about-status-dot">System Online</span>
+                        <p class="about-text">
+                            I am a passionate <span class="about-highlight">software engineer</span> and 
+                            <span class="about-highlight">researcher</span> with a deep focus on 
+                            <span class="about-accent">Artificial Intelligence</span> and 
+                            <span class="about-accent">Machine Learning</span>. Currently, I specialize in building 
+                            intelligent, data-driven systems, training 
+                            <span class="about-secondary">deep learning neural architectures</span>, and developing 
+                            robust, full-scale software applications that solve complex, real-world problems.
+                        </p>
+                        <p class="about-text">
+                            With experience spanning from <span class="about-accent">AI/ML development</span> 
+                            (including <span class="about-highlight">RAG diagnostics</span> and 
+                            <span class="about-highlight">transformer chatbots</span>) to core 
+                            <span class="about-secondary">software engineering</span>, I combine solid system design 
+                            practices with cutting-edge academic AI research. I am dedicated to writing 
+                            <span class="about-accent">clean, high-performance</span>, and maintainable code that 
+                            bridges the gap between state-of-the-art AI models and user-centric applications.
+                        </p>
+                    </div>
                 </div>
             </div>
+
+            <!-- Photo Carousel -->
+            <div class="about-photo-carousel" data-aos="fade-up" data-aos-duration="1000">
+                <h4 class="about-carousel-title">Moments & Memories</h4>
+                <div class="about-carousel-track-wrapper">
+                    <div class="about-carousel-track" id="aboutCarouselTrack">
+                        <div class="about-carousel-item"><img src="./photos/photo_1.jpeg" alt="Photo 1"></div>
+                        <div class="about-carousel-item"><img src="./photos/photo_2.jpeg" alt="Photo 2"></div>
+                        <div class="about-carousel-item"><img src="./photos/photo_3.png" alt="Photo 3"></div>
+                        <div class="about-carousel-item"><img src="./photos/photo_4.jpeg" alt="Photo 4"></div>
+                        <div class="about-carousel-item"><img src="./photos/photo_5.png" alt="Photo 5"></div>
+                        <div class="about-carousel-item"><img src="./photos/photo_6.png" alt="Photo 6"></div>
+                        <div class="about-carousel-item"><img src="./photos/photo_7.jpeg" alt="Photo 7"></div>
+                        <div class="about-carousel-item"><img src="./photos/photo_8.jpeg" alt="Photo 8"></div>
+                        <div class="about-carousel-item"><img src="./photos/photo_9.jpeg" alt="Photo 9"></div>
+                        <!-- Duplicated for seamless loop -->
+                        <div class="about-carousel-item"><img src="./photos/photo_1.jpeg" alt="Photo 1"></div>
+                        <div class="about-carousel-item"><img src="./photos/photo_2.jpeg" alt="Photo 2"></div>
+                        <div class="about-carousel-item"><img src="./photos/photo_3.png" alt="Photo 3"></div>
+                        <div class="about-carousel-item"><img src="./photos/photo_4.jpeg" alt="Photo 4"></div>
+                        <div class="about-carousel-item"><img src="./photos/photo_5.png" alt="Photo 5"></div>
+                        <div class="about-carousel-item"><img src="./photos/photo_6.png" alt="Photo 6"></div>
+                        <div class="about-carousel-item"><img src="./photos/photo_7.jpeg" alt="Photo 7"></div>
+                        <div class="about-carousel-item"><img src="./photos/photo_8.jpeg" alt="Photo 8"></div>
+                        <div class="about-carousel-item"><img src="./photos/photo_9.jpeg" alt="Photo 9"></div>
+                    </div>
+                </div>
+            </div>
+
 
             <!-- Interactive AI Core Terminal -->
             <div class="terminal-widget" data-aos="zoom-in" data-aos-duration="1000">
@@ -4933,6 +5195,20 @@
                             </div>
                         </div>
 
+                        <!-- Dean List of Honors -->
+                        <div class="award-card">
+                            <span class="award-badge">Dean List of Honors</span>
+                            <div class="award-icon-box">
+                                <i class="fas fa-medal" style="color: #43cea2;"></i>
+                            </div>
+                            <div class="award-content">
+                                <h3 class="award-title">Dean List of Honors</h3>
+                                <p class="award-org"><i class="fas fa-laptop-code"></i> FAST-NUCES</p>
+                                <p class="award-description">Got a CGPA of 3.6+ in my last semester,  
+                                    consistently ranking among the top students in my class.</p>
+                            </div>
+                        </div>
+
                         <!-- Vine-a-thon -->
                         <div class="award-card">
                             <span class="award-badge">3rd Place</span>
@@ -4959,20 +5235,6 @@
                                     Contest</p>
                                 <p class="award-description">Successfully advanced to the second regional round of the
                                     prestigious global algorithmic problem-solving competition.</p>
-                            </div>
-                        </div>
-
-                        <!-- Softec -->
-                        <div class="award-card">
-                            <span class="award-badge">National</span>
-                            <div class="award-icon-box">
-                                <i class="fas fa-medal" style="color: #43cea2;"></i>
-                            </div>
-                            <div class="award-content">
-                                <h3 class="award-title">Softec FAST Lahore 2026</h3>
-                                <p class="award-org"><i class="fas fa-laptop-code"></i> Softec National IT Event</p>
-                                <p class="award-description">Selected to represent FAST CFD and competed at one of
-                                    Pakistan's most established national level IT and programming symposiums.</p>
                             </div>
                         </div>
                     </div>
@@ -5143,6 +5405,38 @@
             offset: 100,
             duration: 800
         });
+
+        // === ABOUT SECTION: 3D Tilt Effect on Text Wrappers ===
+        (function() {
+            const wrappers = document.querySelectorAll('.about-text-block');
+            wrappers.forEach(wrapper => {
+                wrapper.addEventListener('mousemove', (e) => {
+                    const rect = wrapper.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    const rotateX = ((y - centerY) / centerY) * -4;
+                    const rotateY = ((x - centerX) / centerX) * 4;
+                    wrapper.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(10px)`;
+                });
+                wrapper.addEventListener('mouseleave', () => {
+                    wrapper.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
+                });
+            });
+
+            // Heading glitch burst effect  
+            const heading = document.querySelector('.about-heading');
+            if (heading) {
+                setInterval(() => {
+                    heading.style.animation = 'none';
+                    heading.offsetHeight; // reflow
+                    heading.style.animation = '';
+                    heading.classList.add('about-glitch-burst');
+                    setTimeout(() => heading.classList.remove('about-glitch-burst'), 200);
+                }, 5000 + Math.random() * 3000);
+            }
+        })();
 
         // Education timeline flip behavior
         const educationCards = document.querySelectorAll('[data-education-card]');

@@ -323,6 +323,34 @@
             box-shadow: 0 5px 15px var(--shadow);
         }
 
+        body.menu-open {
+            overflow: hidden !important;
+            touch-action: none;
+        }
+
+        .mobile-menu-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            z-index: 89;
+        }
+
+        .mobile-menu-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .mobile-nav-actions {
+            display: none;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
         .mobile-menu-btn {
             display: none;
             background: none;
@@ -333,35 +361,61 @@
         }
 
         .mobile-menu {
-            display: none;
+            display: block;
             position: fixed;
             top: 0;
             right: 0;
-            width: 300px;
+            width: min(320px, 85vw);
             height: 100vh;
-            background-color: var(--card);
-            padding: 6rem 2rem 2rem;
+            height: 100dvh;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 5rem 1.5rem 2rem;
             z-index: 90;
-            box-shadow: -5px 0 30px var(--shadow);
+            box-shadow: -10px 0 40px rgba(0, 0, 0, 0.25);
             transform: translateX(100%);
-            transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            overflow-y: auto;
+        }
+
+        .dark .mobile-menu {
+            background: rgba(17, 34, 64, 0.95);
         }
 
         .mobile-menu.active {
             transform: translateX(0);
         }
 
+        .mobile-menu ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
         .mobile-menu .nav-link {
-            display: block;
-            padding: 1rem 0;
-            font-size: 1.1rem;
-            text-align: center;
+            display: flex;
+            align-items: center;
+            min-height: 48px;
+            padding: 0.75rem 1rem;
+            font-size: 1.05rem;
+            font-weight: 500;
+            border-radius: 10px;
             border-bottom: 1px solid var(--border);
+            transition: all 0.2s ease;
+        }
+
+        .mobile-menu .nav-link.active {
+            background: rgba(108, 99, 255, 0.12);
+            color: var(--primary);
+            font-weight: 600;
         }
 
         .mobile-menu .nav-number {
-            display: block;
-            margin-bottom: 0.25rem;
+            display: inline-block;
+            margin-right: 0.75rem;
+            margin-bottom: 0;
         }
 
         /* Hero Section */
@@ -544,9 +598,50 @@
         .hero-image-container {
             position: relative;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             margin-top: -96px;
+        }
+
+        /* Intro Video Play Button */
+        .intro-video-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+            margin-top: 1.5rem;
+            padding: 0.65rem 1.4rem;
+            border-radius: 50px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: #ffffff;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 15px rgba(108, 99, 255, 0.35);
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 10;
+            position: relative;
+        }
+
+        .intro-video-btn:hover {
+            transform: translateY(-2px) scale(1.04);
+            box-shadow: 0 8px 25px rgba(108, 99, 255, 0.5);
+        }
+
+        .intro-video-btn:active {
+            transform: translateY(0) scale(0.98);
+        }
+
+        .intro-video-btn i {
+            font-size: 0.85rem;
+            transition: transform 0.3s ease;
+        }
+
+        .intro-video-btn.is-playing {
+            background: linear-gradient(135deg, #10b981, #059669);
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
         }
 
         .hero-image-wrapper {
@@ -3550,58 +3645,64 @@
             }
         }
 
-        /* Responsive Styles */
+        /* ==========================================================================
+           Responsive Mobile & Tablet Media Queries (Desktop Layout Preserved)
+           ========================================================================== */
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .hero-description img {
+            max-width: 100%;
+            height: auto;
+            object-fit: contain;
+        }
+
+        /* Desktop > 1024px remains pixel-perfect */
         @media (max-width: 1200px) {
             .hero-title {
-                font-size: 3.5rem;
+                font-size: clamp(2.8rem, 5vw, 3.5rem);
             }
 
             .hero-subtitle {
-                font-size: 2rem;
+                font-size: clamp(1.8rem, 3.5vw, 2rem);
             }
 
             .about-image-wrapper {
-                width: 350px;
-                height: 450px;
+                width: 320px;
+                height: 400px;
+            }
+
+            .experience-container {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .projects-grid {
+                grid-template-columns: repeat(3, 1fr);
             }
         }
 
-        @media (max-width: 992px) {
-            .hero-grid {
+        /* Tablet / iPad (1024px & 820px) */
+        @media (max-width: 1024px) {
+            .container {
+                padding: 0 1.5rem;
+            }
+
+            .certs-awards-grid {
                 grid-template-columns: 1fr;
-                gap: 3rem;
-            }
-
-            .hero-content {
-                order: 2;
-                text-align: center;
-            }
-
-            .hero-greeting::before {
-                display: none;
-            }
-
-            .hero-description {
-                margin: 0 auto 2.5rem;
-            }
-
-            .social-links {
-                justify-content: center;
-            }
-
-            .hero-image-container {
-                order: 1;
+                gap: 2.5rem;
             }
 
             .about-grid {
                 grid-template-columns: 1fr;
-                gap: 2rem;
+                gap: 2.5rem;
             }
 
             .about-image-wrapper {
                 margin: 0 auto;
-                width: 260px;
-                height: 320px;
             }
 
             .about-content {
@@ -3613,82 +3714,60 @@
                 left: 50%;
                 transform: translateX(-50%);
             }
+        }
 
-            .about-text-block {
-                padding: 1.25rem;
-                text-align: left;
+        @media (max-width: 992px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
             }
 
-            .skills-title {
-                display: block;
+            .hero-content {
+                order: 2;
                 text-align: center;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
             }
 
-            .skills-title::after {
-                left: 50%;
-                transform: translateX(-50%);
-            }
-
-            .skills-grid {
+            .hero-greeting {
                 justify-content: center;
             }
 
-            .education-title-container {
-                margin-bottom: 4rem;
+            .hero-greeting::before {
+                display: none;
             }
 
-            .education-timeline::before {
-                left: 24px;
-                transform: none;
+            .hero-description {
+                margin: 0 auto 2rem;
             }
 
-            .education-timeline::after {
-                left: 24px;
-                transform: none;
+            .hero-buttons {
+                justify-content: center;
             }
 
-            .education-card {
-                width: 100%;
-                padding-left: 3.5rem;
-                padding-right: 0;
+            .social-links {
+                justify-content: center;
+                margin-top: 2rem;
             }
 
-            .education-card:nth-child(even) {
-                align-self: stretch;
-                padding-left: 3.5rem;
+            .hero-image-container {
+                order: 1;
+                margin-top: 0;
             }
 
-            .education-card::before {
-                left: 16px;
-                right: auto;
+            .hero-image-wrapper {
+                width: min(100%, 360px);
+                height: auto;
+                aspect-ratio: 4 / 3;
             }
 
-            .education-card::after {
-                left: 32px;
-                width: 2.6rem;
+            .experience-container {
+                grid-template-columns: repeat(2, 1fr);
             }
 
-            .education-card-inner {
-                min-height: auto;
-            }
-
-            .education-card-surface {
-                min-height: auto;
-            }
-
-            .education-card-back {
-                position: relative;
-                inset: auto;
-                transform: rotateY(180deg);
-                margin-top: -100%;
-            }
-
-            .education-visual {
-                grid-template-columns: 1fr;
-            }
-
-            .education-meta-grid {
-                grid-template-columns: 1fr;
+            .projects-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
 
             .contact-grid {
@@ -3720,144 +3799,380 @@
             }
         }
 
+        /* Mobile Viewports (<= 768px - iPad Mini, Mobile) */
         @media (max-width: 768px) {
             .navbar {
-                padding: 1rem 0;
+                padding: 0.8rem 0;
             }
 
             .nav-menu {
-                display: none;
+                display: none !important;
+            }
+
+            .mobile-nav-actions {
+                display: flex;
+                align-items: center;
+                gap: 0.75rem;
             }
 
             .mobile-menu-btn {
-                display: block;
-            }
-
-            .mobile-menu {
-                display: block;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 44px;
+                height: 44px;
+                border-radius: 50%;
+                background-color: var(--card);
+                border: 1px solid var(--border);
+                font-size: 1.25rem;
+                box-shadow: 0 2px 10px var(--shadow);
             }
 
             .hero-title {
-                font-size: 2.8rem;
+                font-size: clamp(2.2rem, 8vw, 2.8rem);
             }
 
             .hero-subtitle {
-                font-size: 1.8rem;
+                font-size: clamp(1.4rem, 5vw, 1.8rem);
+            }
+
+            .section {
+                padding: 4rem 0;
+            }
+
+            .section-title-container {
+                margin-bottom: 3rem;
             }
 
             .section-title {
-                font-size: 2rem;
+                font-size: clamp(1.75rem, 6vw, 2.2rem);
             }
 
-            .about-cards {
+            /* Single-column Education & Experience Timelines on Mobile */
+            .education-title-container {
+                margin-bottom: 3.5rem;
+            }
+
+            .education-timeline::before {
+                left: 20px;
+                transform: none;
+            }
+
+            .education-timeline::after {
+                left: 20px;
+                transform: none;
+            }
+
+            .education-card {
+                width: 100%;
+                padding-left: 3rem !important;
+                padding-right: 0 !important;
+            }
+
+            .education-card:nth-child(even) {
+                align-self: stretch;
+                padding-left: 3rem !important;
+                padding-right: 0 !important;
+            }
+
+            .education-card::before {
+                left: 11px !important;
+                right: auto !important;
+            }
+
+            .education-card:nth-child(even)::before {
+                left: 11px !important;
+                right: auto !important;
+            }
+
+            .education-card::after,
+            .education-card:nth-child(even)::after {
+                left: 20px !important;
+                width: 1.5rem !important;
+            }
+
+            .education-card-inner {
+                min-height: auto;
+            }
+
+            .education-card-surface {
+                padding: 1.25rem;
+            }
+
+            .education-meta-grid {
                 grid-template-columns: 1fr;
+                gap: 0.5rem;
+            }
+
+            .experience-container {
+                grid-template-columns: 1fr;
+                max-width: 100%;
             }
 
             .projects-grid {
                 grid-template-columns: 1fr;
             }
 
+            .about-cards {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+
             .form-row {
                 grid-template-columns: 1fr;
+                gap: 1.25rem;
             }
         }
 
-        @media (max-width: 576px) {
-            .hero-title {
-                font-size: 2.3rem;
+        /* 480px Breakpoint (Large Mobile - 480px, 430px, 412px, 390px) */
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 1rem;
             }
 
-            .hero-subtitle {
-                font-size: 1.5rem;
+            .status-pill {
+                font-size: 0.78rem;
+                padding: 0.4rem 0.85rem;
+                max-width: 100%;
+                text-align: center;
+                white-space: normal;
+                line-height: 1.4;
             }
 
-            .hero-image-wrapper {
-                width: 320px;
-                height: 240px;
-            }
-
-            .hero-image {
-                width: 100%;
-                height: 100%;
-            }
-
-            .about-image-wrapper {
-                width: 280px;
-                height: 350px;
-            }
-
-            .experience-header {
+            .hero-buttons {
                 flex-direction: column;
-            }
-
-            .experience-date {
-                margin-top: 0.5rem;
-            }
-
-            .education-main-title {
+                width: 100%;
                 gap: 0.75rem;
             }
 
-            .education-title-icon {
+            .hero-buttons .btn {
+                width: 100%;
+                min-height: 46px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .social-links {
+                gap: 1rem;
+            }
+
+            .social-link {
+                width: 2.75rem;
+                height: 2.75rem;
+            }
+
+            .hero-image-wrapper {
+                width: 100%;
+                max-width: 320px;
+                height: 240px;
+            }
+
+            .about-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .about-image-wrapper {
+                width: min(100%, 280px);
+                height: 330px;
+            }
+
+            .about-text-block {
+                padding: 1.25rem 1rem;
+            }
+
+            .about-heading {
+                font-size: 1.5rem;
+            }
+
+            .terminal-widget {
+                margin: 2rem 0 0;
+            }
+
+            .terminal-body {
+                padding: 1rem;
+                height: 260px;
+                font-size: 0.8rem;
+            }
+
+            .project-filters {
+                gap: 0.5rem;
+            }
+
+            .filter-btn {
+                padding: 0.4rem 0.9rem;
+                font-size: 0.8rem;
+                min-height: 40px;
+            }
+
+            .certificates-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .volunteer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-form-container {
+                padding: 1.5rem 1.25rem;
+            }
+
+            .contact-info-item {
+                padding: 1.25rem 1rem;
+            }
+
+            .contact-info-icon {
                 width: 3rem;
                 height: 3rem;
-                border-radius: 1rem;
+                font-size: 1.25rem;
+                margin-right: 1rem;
             }
 
-            .education-card {
-                padding-left: 3rem;
+            .chat-widget-container {
+                bottom: 85px;
+                right: 12px;
+                left: 12px;
+                width: auto;
+                height: min(480px, 75vh);
             }
 
-            .education-card:nth-child(even) {
-                padding-left: 3rem;
+            .chat-widget-btn {
+                bottom: 15px;
+                right: 15px;
+                width: 52px;
+                height: 52px;
             }
 
-            .education-card-surface {
-                padding: 1.1rem;
-                border-radius: 22px;
-            }
-
-            .education-card-header {
-                flex-direction: column;
-            }
-
-            .education-chip {
-                width: fit-content;
-            }
-
-            .education-logo-wrap {
-                width: 3.5rem;
-                height: 3.5rem;
-                border-radius: 1rem;
-            }
-
-            .education-heading-group h3 {
-                font-size: 1.2rem;
-            }
-
-            .education-thumb {
-                min-height: 88px;
-            }
-
-            .education-back-title {
-                font-size: 1.1rem;
-            }
-
-            .education-back-list li,
-            .education-testimonial {
-                font-size: 0.85rem;
+            #scrollToTopBtn {
+                right: 12px;
+                width: 44px;
+                height: 44px;
+                font-size: 18px;
             }
         }
 
+        /* 375px & 360px Breakpoints (Medium Small Mobile) */
+        @media (max-width: 375px) {
+            .navbar-brand {
+                font-size: 1.4rem;
+            }
+
+            .hero-title {
+                font-size: 2.1rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.3rem;
+            }
+
+            .hero-description {
+                font-size: 0.95rem;
+            }
+
+            .section-title {
+                font-size: 1.6rem;
+            }
+
+            .about-carousel-item {
+                width: 170px;
+                height: 220px;
+            }
+
+            .skill-badge {
+                padding: 0.5rem 0.9rem;
+                font-size: 0.82rem;
+            }
+
+            .project-content {
+                padding: 1rem;
+            }
+
+            .project-links {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .project-link {
+                width: 100%;
+                justify-content: center;
+                min-height: 42px;
+            }
+
+            .education-card-surface {
+                padding: 1rem;
+            }
+
+            .education-heading-group h3 {
+                font-size: 1.15rem;
+            }
+        }
+
+        /* 320px Breakpoint (Ultra-Small Mobile) */
+        @media (max-width: 320px) {
+            .container {
+                padding: 0 0.75rem;
+            }
+
+            .hero-title {
+                font-size: 1.85rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.15rem;
+            }
+
+            .btn {
+                padding: 0.75rem 1.25rem;
+                font-size: 0.9rem;
+            }
+
+            .status-pill {
+                font-size: 0.72rem;
+            }
+
+            .experience-card-inner {
+                padding: 1.25rem 1rem;
+            }
+
+            .education-card {
+                padding-left: 2.5rem !important;
+            }
+
+            .education-timeline::before,
+            .education-timeline::after {
+                left: 14px;
+            }
+
+            .education-card::before,
+            .education-card:nth-child(even)::before {
+                left: 5px !important;
+            }
+
+            .education-card::after,
+            .education-card:nth-child(even)::after {
+                left: 14px !important;
+                width: 1rem !important;
+            }
+        }
+
+        /* Reduced Motion Accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            ::before,
+            ::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
 
         /* Scroll to Top Button */
         #scrollToTopBtn {
             position: fixed;
             top: 50%;
-            /* Center vertically */
             right: 20px;
             transform: translateY(-50%);
-            /* Offset to truly center */
             width: 50px;
             height: 50px;
             background-color: var(--primary);
@@ -3927,13 +4242,18 @@
                     </li>
                 </ul>
 
-                <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Toggle mobile menu">
-                    <i class="fas fa-bars"></i>
-                </button>
+                <div class="mobile-nav-actions">
+                    <button id="theme-toggle-mobile" class="theme-toggle" aria-label="Toggle theme">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Toggle mobile menu" aria-expanded="false">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
             </nav>
         </div>
 
-        <div id="mobile-menu" class="mobile-menu">
+        <div id="mobile-menu" class="mobile-menu" aria-label="Mobile Navigation Drawer">
             <ul>
                 <li><a href="#home" class="nav-link active"><span class="nav-number">Home</a></li>
                 <li><a href="#about" class="nav-link"><span class="nav-number">About</a></li>
@@ -3942,9 +4262,10 @@
                 <li><a href="#projects" class="nav-link"><span class="nav-number">Projects</a></li>
                 <li><a href="#volunteer" class="nav-link"><span class="nav-number">Volunteer</a></li>
                 <li><a href="#certificates" class="nav-link"><span class="nav-number">Certificates</a></li>
-                <li><a href="#contact" class="nav-link"><span class="nav-number"> Contact</a></li>
+                <li><a href="#contact" class="nav-link"><span class="nav-number">Contact</a></li>
             </ul>
         </div>
+        <div id="mobile-menu-overlay" class="mobile-menu-overlay"></div>
     </header>
 
     <section id="home" class="hero">
@@ -3965,9 +4286,9 @@
                             src="https://readme-typing-svg.herokuapp.com?color=%23FF4B8B&size=30&center=true&vCenter=true&width=650&lines=Hello!+I'm+Muhammad+Bilal+Ashiq;+AI+%26+Machine+Learning+Engineer;💻+Software+Developer;🎯+Tech+Innovator+%26+Educator;💡+Building+Intelligent+Systems" />
 
                     </p>
-                    <div>
+                    <div class="hero-buttons">
                         <a href="#contact" class="btn btn-primary">Get In Touch</a>
-                        <a href="#projects" class="btn btn-outline" style="margin-left: 1rem;">View Projects</a>
+                        <a href="#projects" class="btn btn-outline">View Projects</a>
                     </div>
                     <div class="social-links">
                         <a href="https://github.com/thecallmeBilalAshiq" target="_blank" rel="noopener noreferrer"
@@ -3997,17 +4318,46 @@
                             playsinline>
                         </video>
                     </div>
+
+                    <button id="introVideoBtn" class="intro-video-btn" type="button" aria-label="Play Introduction Video">
+                        <i class="fas fa-play"></i>
+                        <span>click here for Introduction</span>
+                    </button>
                 </div>           
             </div>
         </div>
 
     <script>
-        document.body.addEventListener('click', function() {
+        (function() {
             const video = document.getElementById('heroVideo');
-            if (video.paused) {
-                video.play();
+            const introBtn = document.getElementById('introVideoBtn');
+
+            function updateBtnState() {
+                if (!video || !introBtn) return;
+                if (video.paused || video.ended) {
+                    introBtn.classList.remove('is-playing');
+                    introBtn.innerHTML = '<i class="fas fa-play"></i> <span>click here for Introduction</span>';
+                } else {
+                    introBtn.classList.add('is-playing');
+                    introBtn.innerHTML = '<i class="fas fa-pause"></i> <span>Pause Introduction</span>';
+                }
             }
-        }, { once: true }); 
+
+            if (video && introBtn) {
+                introBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    if (video.paused) {
+                        video.play();
+                    } else {
+                        video.pause();
+                    }
+                });
+
+                video.addEventListener('play', updateBtnState);
+                video.addEventListener('pause', updateBtnState);
+                video.addEventListener('ended', updateBtnState);
+            }
+        })();
     </script>      
     </section>
 
@@ -4736,18 +5086,105 @@
             <!-- Project Category Filters -->
             <div class="project-filters" data-aos="fade-up" data-aos-duration="800">
                 <button class="filter-btn active" data-filter="all">All Projects</button>
+                <button class="filter-btn" data-filter="freelance">Freelance Projects</button>
                 <button class="filter-btn" data-filter="ai">AI & NLP</button>
                 <button class="filter-btn" data-filter="web">Web & Full-Stack</button>
                 <button class="filter-btn" data-filter="security">Security</button>
             </div>
 
             <div class="projects-grid">
-                <!-- NeuroHire -->
-                <div class="project-card" data-category="ai" data-aos="fade-up" data-aos-duration="1000"
+                <!-- Comfort Studio UK -->
+                <div class="project-card" data-category="freelance web" data-aos="fade-up" data-aos-duration="1000"
                     data-aos-delay="0">
                     <div class="project-image-container">
+                        <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=500&h=300&fit=crop"
+                            alt="Comfort Studio UK - Furniture Store" class="project-image" loading="lazy">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Comfort Studio UK - Furniture Store</h3>
+                        <p class="project-description">
+                            Full-stack e-commerce web app for UK client, with responsive UI, SEO optimization, secure authentication, admin dashboard, and order management.
+                        </p>
+                        <div class="project-tags">
+                            <span class="project-tag">Next.js</span>
+                            <span class="project-tag">Supabase</span>
+                            <span class="project-tag">TypeScript</span>
+                            <span class="project-tag">Firebase</span>
+                            <span class="project-tag">PostgreSQL</span>
+                            <span class="project-tag">Freelance</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://comfortstudio.co.uk" target="_blank" rel="noopener noreferrer"
+                                class="project-link">
+                                <i class="fas fa-external-link-alt"></i> comfortstudio.co.uk
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Career ProServe -->
+                <div class="project-card" data-category="freelance web" data-aos="fade-up" data-aos-duration="1000"
+                    data-aos-delay="100">
+                    <div class="project-image-container">
+                        <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=500&h=300&fit=crop"
+                            alt="Career ProServe - Recruitment Platform" class="project-image" loading="lazy">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Career ProServe - Recruitment & B2B Platform</h3>
+                        <p class="project-description">
+                            Developed a full-stack corporate/executive recruitment platform for CEO/Founder of company, featuring job postings, future jobs, training management, mystery shopper services, admin dashboard, role-based access, and CSV/Excel reporting.
+                        </p>
+                        <div class="project-tags">
+                            <span class="project-tag">Next.js</span>
+                            <span class="project-tag">Cloudinary</span>
+                            <span class="project-tag">PostgreSQL</span>
+                            <span class="project-tag">Supabase</span>
+                            <span class="project-tag">Freelance</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://careerproserve.vercel.app" target="_blank" rel="noopener noreferrer"
+                                class="project-link">
+                                <i class="fas fa-external-link-alt"></i> careerproserve.vercel.app
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mashoor Fabrics -->
+                <div class="project-card" data-category="freelance web" data-aos="fade-up" data-aos-duration="1000"
+                    data-aos-delay="200">
+                    <div class="project-image-container">
+                        <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=500&h=300&fit=crop"
+                            alt="Mashoor Fabrics Clothing Store" class="project-image" loading="lazy">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Mashoor Fabrics - E-Commerce Store</h3>
+                        <p class="project-description">
+                            Built a full-scale online clothing store (paid freelance project) with catalog, shopping cart, checkout, and order tracking.
+                            Integrated payment options, real-time inventory management, and custom SEO optimizations.
+                        </p>
+                        <div class="project-tags">
+                            <span class="project-tag">WordPress</span>
+                            <span class="project-tag">WooCommerce</span>
+                            <span class="project-tag">E-Commerce</span>
+                            <span class="project-tag">Freelance Project</span>
+                            <span class="project-tag">SEO</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://mashoorfabrics.com" target="_blank" rel="noopener noreferrer"
+                                class="project-link">
+                                <i class="fas fa-external-link-alt"></i> mashoorfabrics.com
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- NeuroHire -->
+                <div class="project-card" data-category="ai web" data-aos="fade-up" data-aos-duration="1000"
+                    data-aos-delay="300">
+                    <div class="project-image-container">
                         <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=500&h=300&fit=crop"
-                            alt="NeuroHire - AI Hiring System" class="project-image">
+                            alt="NeuroHire - AI Hiring System" class="project-image" loading="lazy">
                     </div>
                     <div class="project-content">
                         <h3 class="project-title">NeuroHire - AI based Proctoring System</h3>
@@ -4770,35 +5207,6 @@
                             <a href="https://neurohireofficial-zeta.vercel.app/" target="_blank" rel="noopener noreferrer"
                                 class="project-link">
                                 <i class="fas fa-external-link-alt"></i> Link
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Mashoor Fabrics -->
-                <div class="project-card" data-category="web" data-aos="fade-up" data-aos-duration="1000"
-                    data-aos-delay="100">
-                    <div class="project-image-container">
-                        <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=500&h=300&fit=crop"
-                            alt="Mashoor Fabrics Clothing Store" class="project-image">
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Mashoor Fabrics</h3>
-                        <p class="project-description">
-                            Built a clothing store (paid project) with catalog, cart, checkout, and order tracking.
-                            Integrated payment, inventory, and responsive design for better performance and SEO.
-                        </p>
-                        <div class="project-tags">
-                            <span class="project-tag">WordPress</span>
-                            <span class="project-tag">WooCommerce</span>
-                            <span class="project-tag">E-Commerce</span>
-                            <span class="project-tag">Paid Project</span>
-                            <span class="project-tag">SEO</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://mashoorfabrics.com" target="_blank" rel="noopener noreferrer"
-                                class="project-link">
-                                <i class="fas fa-external-link-alt"></i> Live Store
                             </a>
                         </div>
                     </div>
@@ -5631,60 +6039,104 @@
         // Set current year in footer
         document.getElementById('current-year').textContent = new Date().getFullYear();
 
-        // Theme Toggle
-        const themeToggle = document.getElementById('theme-toggle');
+        // Theme Toggle (Supports both desktop and mobile buttons)
+        const themeToggles = document.querySelectorAll('#theme-toggle, #theme-toggle-mobile');
         const htmlElement = document.documentElement;
-        const themeIcon = themeToggle.querySelector('i');
 
-        // Check for saved theme preference or use device preference
-        const savedTheme = localStorage.getItem('theme');
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-        if (savedTheme === 'dark' || (savedTheme === null && prefersDark)) {
-            htmlElement.classList.add('dark');
-            themeIcon.classList.remove('fa-moon');
-            themeIcon.classList.add('fa-sun');
+        function updateThemeIcons(isDark) {
+            themeToggles.forEach(btn => {
+                const icon = btn ? btn.querySelector('i') : null;
+                if (icon) {
+                    if (isDark) {
+                        icon.classList.remove('fa-moon');
+                        icon.classList.add('fa-sun');
+                    } else {
+                        icon.classList.remove('fa-sun');
+                        icon.classList.add('fa-moon');
+                    }
+                }
+            });
         }
 
-        // Toggle theme when button is clicked
-        themeToggle.addEventListener('click', function () {
-            htmlElement.classList.toggle('dark');
+        const savedTheme = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const isInitialDark = savedTheme === 'dark' || (savedTheme === null && prefersDark);
 
-            if (htmlElement.classList.contains('dark')) {
-                localStorage.setItem('theme', 'dark');
-                themeIcon.classList.remove('fa-moon');
-                themeIcon.classList.add('fa-sun');
-            } else {
-                localStorage.setItem('theme', 'light');
-                themeIcon.classList.remove('fa-sun');
-                themeIcon.classList.add('fa-moon');
-            }
+        if (isInitialDark) {
+            htmlElement.classList.add('dark');
+            updateThemeIcons(true);
+        }
+
+        themeToggles.forEach(btn => {
+            btn.addEventListener('click', function () {
+                htmlElement.classList.toggle('dark');
+                const isDark = htmlElement.classList.contains('dark');
+                localStorage.setItem('theme', isDark ? 'dark' : 'light');
+                updateThemeIcons(isDark);
+            });
         });
 
-        // Mobile Menu Toggle
+        // Professional Mobile Hamburger Menu & Overlay Controls
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
-        const mobileMenuIcon = mobileMenuBtn.querySelector('i');
+        const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
 
-        mobileMenuBtn.addEventListener('click', function () {
-            mobileMenu.classList.toggle('active');
+        function toggleMobileMenu(open) {
+            if (!mobileMenu) return;
+            const isOpen = open !== undefined ? open : !mobileMenu.classList.contains('active');
+            mobileMenu.classList.toggle('active', isOpen);
+            if (mobileMenuOverlay) mobileMenuOverlay.classList.toggle('active', isOpen);
+            document.body.classList.toggle('menu-open', isOpen);
+            
+            if (mobileMenuBtn) {
+                mobileMenuBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+                const mobileMenuIcon = mobileMenuBtn.querySelector('i');
+                if (mobileMenuIcon) {
+                    if (isOpen) {
+                        mobileMenuIcon.classList.remove('fa-bars');
+                        mobileMenuIcon.classList.add('fa-times');
+                    } else {
+                        mobileMenuIcon.classList.remove('fa-times');
+                        mobileMenuIcon.classList.add('fa-bars');
+                    }
+                }
+            }
+        }
 
-            if (mobileMenu.classList.contains('active')) {
-                mobileMenuIcon.classList.remove('fa-bars');
-                mobileMenuIcon.classList.add('fa-times');
-            } else {
-                mobileMenuIcon.classList.remove('fa-times');
-                mobileMenuIcon.classList.add('fa-bars');
+        if (mobileMenuBtn) {
+            mobileMenuBtn.addEventListener('click', function (e) {
+                e.stopPropagation();
+                toggleMobileMenu();
+            });
+        }
+
+        if (mobileMenuOverlay) {
+            mobileMenuOverlay.addEventListener('click', function () {
+                toggleMobileMenu(false);
+            });
+        }
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function (e) {
+            if (mobileMenu && mobileMenu.classList.contains('active')) {
+                if (!mobileMenu.contains(e.target) && (!mobileMenuBtn || !mobileMenuBtn.contains(e.target))) {
+                    toggleMobileMenu(false);
+                }
             }
         });
 
-        // Close mobile menu when clicking a link
-        const mobileMenuLinks = mobileMenu.querySelectorAll('.nav-link');
+        // Close mobile menu on Escape key press
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' && mobileMenu && mobileMenu.classList.contains('active')) {
+                toggleMobileMenu(false);
+            }
+        });
+
+        // Close mobile menu after clicking any navigation link
+        const mobileMenuLinks = mobileMenu ? mobileMenu.querySelectorAll('.nav-link') : [];
         mobileMenuLinks.forEach(link => {
             link.addEventListener('click', function () {
-                mobileMenu.classList.remove('active');
-                mobileMenuIcon.classList.remove('fa-times');
-                mobileMenuIcon.classList.add('fa-bars');
+                toggleMobileMenu(false);
             });
         });
 
@@ -5782,7 +6234,8 @@
                 const filterValue = button.getAttribute('data-filter');
 
                 projectCards.forEach(card => {
-                    if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
+                    const cardCategories = (card.getAttribute('data-category') || '').split(' ');
+                    if (filterValue === 'all' || cardCategories.includes(filterValue)) {
                         card.classList.remove('hidden');
                     } else {
                         card.classList.add('hidden');
@@ -5890,161 +6343,10 @@ Redirecting to direct contact form to initiate hiring! Get ready...`;
             // Auto-scroll to bottom of terminal
             terminalBody.scrollTop = terminalBody.scrollHeight;
         }
-
-        // Chatbot Widget Event Handlers
-        let chatWidgetBtn, chatWidgetContainer, chatWidgetClose, chatWidgetInput, chatWidgetSend, chatWidgetMessages;
-
-        document.addEventListener('DOMContentLoaded', function () {
-            chatWidgetBtn = document.getElementById('chat-widget-btn');
-            chatWidgetContainer = document.getElementById('chat-widget-container');
-            chatWidgetClose = document.getElementById('chat-widget-close');
-            chatWidgetInput = document.getElementById('chat-widget-input');
-            chatWidgetSend = document.getElementById('chat-widget-send');
-            chatWidgetMessages = document.getElementById('chat-widget-messages');
-            const chatTooltipPopup = document.getElementById('chat-tooltip-popup');
-
-            if (chatTooltipPopup) {
-                // Show tooltip bubble after 2.5 seconds to capture recruiter attention
-                setTimeout(() => {
-                    if (chatWidgetContainer && !chatWidgetContainer.classList.contains('active')) {
-                        chatTooltipPopup.classList.add('active');
-                    }
-                }, 2500);
-
-                // Click tooltip directly to dismiss and open chat automatically
-                chatTooltipPopup.addEventListener('click', () => {
-                    chatTooltipPopup.classList.remove('active');
-                    if (chatWidgetContainer) {
-                        chatWidgetContainer.classList.add('active');
-                    }
-                });
-            }
-
-            if (chatWidgetBtn && chatWidgetContainer) {
-                chatWidgetBtn.addEventListener('click', () => {
-                    chatWidgetContainer.classList.toggle('active');
-                    if (chatTooltipPopup) {
-                        chatTooltipPopup.classList.remove('active');
-                    }
-                });
-                chatWidgetClose.addEventListener('click', () => {
-                    chatWidgetContainer.classList.remove('active');
-                });
-            }
-
-            if (chatWidgetInput) {
-                chatWidgetInput.addEventListener('keydown', (e) => {
-                    if (e.key === 'Enter') {
-                        submitChatMessage();
-                    }
-                });
-                if (chatWidgetSend) {
-                    chatWidgetSend.addEventListener('click', submitChatMessage);
-                }
-            }
-        });
-
-        function sendSuggestion(text) {
-            chatWidgetInput.value = text;
-            submitChatMessage();
-        }
-
-        function submitChatMessage() {
-            const query = chatWidgetInput.value.trim();
-            if (!query) return;
-
-            // Append user message
-            appendMessage(query, 'user');
-            chatWidgetInput.value = '';
-
-            // Append typing indicator
-            const typingDiv = document.createElement('div');
-            typingDiv.className = 'chat-msg bot typing-indicator-container';
-            typingDiv.innerHTML = `<div class="typing-indicator">
-                <span class="typing-dot"></span>
-                <span class="typing-dot"></span>
-                <span class="typing-dot"></span>
-            </div>`;
-            chatWidgetMessages.appendChild(typingDiv);
-            chatWidgetMessages.scrollTop = chatWidgetMessages.scrollHeight;
-
-            // Generate reply after short simulation delay
-            setTimeout(() => {
-                chatWidgetMessages.removeChild(typingDiv);
-                const reply = generateChatBotResponse(query);
-                appendMessage(reply, 'bot');
-                chatWidgetMessages.scrollTop = chatWidgetMessages.scrollHeight;
-            }, 800);
-        }
-
-        function appendMessage(text, sender) {
-            const msgDiv = document.createElement('div');
-            msgDiv.className = `chat-msg ${sender}`;
-            msgDiv.innerHTML = text;
-            chatWidgetMessages.appendChild(msgDiv);
-        }
-
-        function generateChatBotResponse(query) {
-            const lower = query.toLowerCase();
-
-            // AI/ML & Projects
-            if (lower.includes('neurohire')) {
-                return `<b>NeuroHire</b> is Bilal's final year project (MERN + Python AI). It's an intelligent AI hiring system featuring automated job posting, CV parsing, and candidate scoring. It even includes online testing with webcam-based head and eye-detection to prevent cheating!`;
-            }
-            if (lower.includes('mashoor') || lower.includes('fabrics')) {
-                return `<b>Mashoor Fabrics</b> is a live, paid E-commerce store Bilal built using WordPress and WooCommerce. It integrates secure payments, real-time inventory management, and is fully SEO optimized for speed and conversion!`;
-            }
-            if (lower.includes('urdu') || lower.includes('chatbot')) {
-                return `The <b>Urdu Conversational Chatbot</b> is a transformer-based multi-head attention model Bilal trained in PyTorch. It features Low-Resource NLP preprocessing and is deployed on Hugging Face Spaces with active RTL display support!`;
-            }
-            if (lower.includes('rag') || lower.includes('diagnostic') || lower.includes('clinical')) {
-                return `Bilal designed an advanced <b>RAG Diagnostic Reasoning</b> system that processes complex clinical notes using the MIMIC-IV-Ext-Direct dataset, assisting with diagnostic reasoning pipelines in healthcare.`;
-            }
-
-            // Skills & Tech
-            if (lower.includes('skills') || lower.includes('tech') || lower.includes('language')) {
-                return `Bilal's primary technology stack includes:<br>
-- <b>AI/ML:</b> Python, PyTorch, Transformers, NLP, RAG.<br>
-- <b>Backend:</b> Spring Boot, Java, FastAPI, MySQL, Oracle.<br>
-- <b>Frontend:</b> JavaScript, React, Next.js, HTML5, CSS3.<br>
-- <b>Systems:</b> Linux, VMware Virtualization.`;
-            }
-
-            // Education & GPA
-            if (lower.includes('education') || lower.includes('gpa') || lower.includes('nuces') || lower.includes('fast')) {
-                return `Bilal is pursuing his Bachelor of Science in Computer Science (BSCS) at <b>FAST-NUCES</b> (Lahore Campus). He boasts a spectacular <b>3.91 CGPA</b> (BSIT path) and won 1st Place in the FAST-NUCES Idea Competition!`;
-            }
-
-            // Contact & Hire
-            if (lower.includes('contact') || lower.includes('hire') || lower.includes('email') || lower.includes('phone')) {
-                return `You can hire Bilal immediately! Reach out directly via:<br>
-- <b>Email:</b> <a href="mailto:methebilalashiq@gmail.com" style="color:var(--primary);text-decoration:underline;">methebilalashiq@gmail.com</a><br>
-- <b>Phone:</b> +92 308 8660209<br>
-- Or scroll to the bottom to send a message via his live contact form!`;
-            }
-
-            // Certificates
-            if (lower.includes('certificat') || lower.includes('award') || lower.includes('competit')) {
-                return `Bilal has several top credentials:<br>
-- 🥇 1st Place FAST-NUCES Idea Competition (developed NeuroSecure)<br>
-- 🎗️ Round II ICPC 2026<br>
-- 🎗️ 3rd Position Vine-a-thon (Google Developer Competition)<br>
-- Deep Learning Specialization (Udemy) & AWS Machine Learning Foundations.`;
-            }
-
-            // Experience
-            if (lower.includes('experience') || lower.includes('job') || lower.includes('entracloud') || lower.includes('intern') || lower.includes('lums') || lower.includes('nop')) {
-                return `Bilal has stellar practical experience:<br>
-- 🌐 <b>CTO & Supervisor</b> at Entracloud (leading dev pipelines).<br>
-- 🔬 <b>Research Assistant</b> in AI & NLP at FAST-NUCES.<br>
-- 🤖 <b>AI Intern</b> at Shopilam (building LLM agents).<br>
-- 🎓 <b>LUMS NOP Scholar</b> (prestigious seasonal selection in 2020).`;
-            }
-
-            // General Questions Fallback
-            return `I'm Bilal's dedicated AI agent. I can tell you all about his expertise in Python, PyTorch, AI/ML models, Spring Boot, or contact channels! How can I help you select Bilal for your role today?`;
-        }
     </script>
+
+    <!-- AI Chatbot Engine Module -->
+    <script src="js/chatbot.js"></script>
 
     <!-- Chat Tooltip Popup -->
     <div class="chat-tooltip-popup" id="chat-tooltip-popup">

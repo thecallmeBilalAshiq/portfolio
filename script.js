@@ -123,44 +123,7 @@
             }
         })();
 
-        // Education timeline flip behavior
-        const educationCards = document.querySelectorAll('[data-education-card]');
-        const isTouchDevice = window.matchMedia('(hover: none), (pointer: coarse)').matches;
-
-        function resetEducationCards(exceptCard = null) {
-            educationCards.forEach(card => {
-                if (card !== exceptCard) {
-                    card.classList.remove('is-flipped');
-                }
-            });
-        }
-
-        educationCards.forEach(card => {
-            card.addEventListener('click', () => {
-                if (!isTouchDevice) {
-                    return;
-                }
-
-                const shouldFlip = !card.classList.contains('is-flipped');
-                resetEducationCards(card);
-                card.classList.toggle('is-flipped', shouldFlip);
-            });
-
-            card.addEventListener('keydown', event => {
-                if (event.key === 'Enter' || event.key === ' ') {
-                    event.preventDefault();
-                    const shouldFlip = !card.classList.contains('is-flipped');
-                    resetEducationCards(card);
-                    card.classList.toggle('is-flipped', shouldFlip);
-                }
-            });
-        });
-
-        document.addEventListener('click', event => {
-            if (isTouchDevice && !event.target.closest('[data-education-card]')) {
-                resetEducationCards();
-            }
-        });
+        // Education timeline section (cards display clean non-flipping layout)
 
         // Particles.js
         particlesJS('particles-js', {

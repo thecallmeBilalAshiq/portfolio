@@ -30,7 +30,7 @@
     <div class="cursor"></div>
     <div class="cursor-follower"></div>
 
-    <button id="scrollToTopBtn" onclick="scrollToTop()">↑</button>
+    <button id="scrollToTopBtn" onclick="scrollToTop()" aria-label="Scroll to Top"><i class="fas fa-chevron-up"></i></button>
 
 
 
@@ -50,6 +50,7 @@
                     <li class="nav-item"><a href="#experience" class="nav-link"><span class="nav-number">Experience</a>
                     </li>
                     <li class="nav-item"><a href="#projects" class="nav-link"><span class="nav-number">Projects</a></li>
+                    <li class="nav-item"><a href="#skills" class="nav-link"><span class="nav-number">Skills</a></li>
                     <li class="nav-item"><a href="#volunteer" class="nav-link"><span class="nav-number">Volunteer</a>
                     </li>
                     <li class="nav-item"><a href="#certificates" class="nav-link"><span
@@ -291,78 +292,6 @@
                     </div>
                     <h4 class="about-card-title">Problem Solving</h4>
                     <p class="about-card-text">Formulating elegant solutions to high-complexity technical problems</p>
-                </div>
-            </div>
-
-            <div class="skills-container">
-                <h3 class="skills-title">Skills & Technologies</h3>
-                <div class="skills-grid">
-                    <div class="skill-badge" data-aos="fade-up" data-aos-duration="600" data-aos-delay="50">
-                        <i class="fab fa-python" style="color: #3776AB;"></i>
-                        <span>Python</span>
-                    </div>
-                    <div class="skill-badge" data-aos="fade-up" data-aos-duration="600" data-aos-delay="100">
-                        <i class="fas fa-brain" style="color: #6C63FF;"></i>
-                        <span>Artificial Intelligence</span>
-                    </div>
-                    <div class="skill-badge" data-aos="fade-up" data-aos-duration="600" data-aos-delay="150">
-                        <i class="fas fa-chart-line" style="color: #4CAF50;"></i>
-                        <span>Machine Learning</span>
-                    </div>
-                    <div class="skill-badge" data-aos="fade-up" data-aos-duration="600" data-aos-delay="200">
-                        <i class="fas fa-leaf" style="color: #6DB33F;"></i>
-                        <span>Spring Boot</span>
-                    </div>
-                    <div class="skill-badge" data-aos="fade-up" data-aos-duration="600" data-aos-delay="250">
-                        <i class="fab fa-java" style="color: #ED8B00;"></i>
-                        <span>Java</span>
-                    </div>
-                    <div class="skill-badge" data-aos="fade-up" data-aos-duration="600" data-aos-delay="300">
-                        <i class="fas fa-database" style="color: #4479A1;"></i>
-                        <span>Database Design</span>
-                    </div>
-                    <div class="skill-badge" data-aos="fade-up" data-aos-duration="600" data-aos-delay="350">
-                        <i class="fas fa-code" style="color: #00599C;"></i>
-                        <span>C++ / C#</span>
-                    </div>
-                    <div class="skill-badge" data-aos="fade-up" data-aos-duration="600" data-aos-delay="400">
-                        <i class="fab fa-js"
-                            style="color: #F7DF1E; background-color: #000000; border-radius: 4px; padding: 1px 3px;"></i>
-                        <span>JavaScript</span>
-                    </div>
-                    <div class="skill-badge" data-aos="fade-up" data-aos-duration="600" data-aos-delay="450">
-                        <i class="fab fa-html5" style="color: #E34F26;"></i>
-                        <span>HTML5</span>
-                    </div>
-                    <div class="skill-badge" data-aos="fade-up" data-aos-duration="600" data-aos-delay="500">
-                        <i class="fab fa-css3-alt" style="color: #1572B6;"></i>
-                        <span>CSS3</span>
-                    </div>
-                    <div class="skill-badge" data-aos="fade-up" data-aos-duration="600" data-aos-delay="550">
-                        <i class="fab fa-bootstrap" style="color: #563D7C;"></i>
-                        <span>Bootstrap</span>
-                    </div>
-                    <div class="skill-badge" data-aos="fade-up" data-aos-duration="600" data-aos-delay="600">
-                        <i class="fab fa-linux"
-                            style="color: #FCC624; background-color: #000000; border-radius: 4px; padding: 1px 3px;"></i>
-                        <span>Linux / Ubuntu</span>
-                    </div>
-                    <div class="skill-badge" data-aos="fade-up" data-aos-duration="600" data-aos-delay="650">
-                        <i class="fas fa-server" style="color: #F00000;"></i>
-                        <span>Oracle SQL</span>
-                    </div>
-                    <div class="skill-badge" data-aos="fade-up" data-aos-duration="600" data-aos-delay="700">
-                        <i class="fas fa-network-wired" style="color: #607080;"></i>
-                        <span>VMware virtualization</span>
-                    </div>
-                    <div class="skill-badge" data-aos="fade-up" data-aos-duration="600" data-aos-delay="750">
-                        <i class="fas fa-project-diagram" style="color: #FF9800;"></i>
-                        <span>Data Structures</span>
-                    </div>
-                    <div class="skill-badge" data-aos="fade-up" data-aos-duration="600" data-aos-delay="800">
-                        <i class="fas fa-globe" style="color: #FF5722;"></i>
-                        <span>Web Development</span>
-                    </div>
                 </div>
             </div>
         </div>
@@ -664,16 +593,6 @@
                                 <span class="education-meta-value">Engineering discipline</span>
                             </div>
                         </div>
-
-                        <div class="education-highlights-block">
-                            <h4 class="education-highlights-title"><i class="fas fa-star"></i> Highlights & Impact</h4>
-                            <ul class="education-highlights-list">
-                                <li><i class="fas fa-check-circle"></i><span>Built AI and software projects with stronger architecture decisions.</span></li>
-                                <li><i class="fas fa-check-circle"></i><span>Strengthened algorithms, data structures, and database thinking.</span></li>
-                                <li><i class="fas fa-check-circle"></i><span>Developed a sharper instinct for production-minded engineering.</span></li>
-                            </ul>
-                            <p class="education-testimonial"><span>FAST shaped the way I build:</span> faster, cleaner, and with more intent.</p>
-                        </div>
                     </div>
                 </article>
 
@@ -717,16 +636,6 @@
                                 <span class="education-meta-label">Shift</span>
                                 <span class="education-meta-value">From interest to practice</span>
                             </div>
-                        </div>
-
-                        <div class="education-highlights-block">
-                            <h4 class="education-highlights-title"><i class="fas fa-star"></i> Highlights & Impact</h4>
-                            <ul class="education-highlights-list">
-                                <li><i class="fas fa-check-circle"></i><span>Strengthened the logic, debugging, and analytical habits behind code quality.</span></li>
-                                <li><i class="fas fa-check-circle"></i><span>Built confidence with core IT concepts and structured problem solving.</span></li>
-                                <li><i class="fas fa-check-circle"></i><span>Created the momentum that later carried into CS specialization.</span></li>
-                            </ul>
-                            <p class="education-testimonial"><span>It was the bridge phase:</span> where curiosity became technical direction.</p>
                         </div>
                     </div>
                 </article>
@@ -772,16 +681,6 @@
                                 <span class="education-meta-value">Quantitative reasoning</span>
                             </div>
                         </div>
-
-                        <div class="education-highlights-block">
-                            <h4 class="education-highlights-title"><i class="fas fa-star"></i> Highlights & Impact</h4>
-                            <ul class="education-highlights-list">
-                                <li><i class="fas fa-check-circle"></i><span>Developed the foundation needed for engineering-level problem solving.</span></li>
-                                <li><i class="fas fa-check-circle"></i><span>Strengthened consistency through a heavy science curriculum.</span></li>
-                                <li><i class="fas fa-check-circle"></i><span>Built the confidence to move into technical higher education.</span></li>
-                            </ul>
-                            <p class="education-testimonial"><span>A formative stage:</span> it taught me how to think under pressure.</p>
-                        </div>
                     </div>
                 </article>
 
@@ -825,16 +724,6 @@
                                 <span class="education-meta-label">Value</span>
                                 <span class="education-meta-value">Consistency and focus</span>
                             </div>
-                        </div>
-
-                        <div class="education-highlights-block">
-                            <h4 class="education-highlights-title"><i class="fas fa-star"></i> Highlights & Impact</h4>
-                            <ul class="education-highlights-list">
-                                <li><i class="fas fa-check-circle"></i><span>Formed the academic discipline that later carried through college and university.</span></li>
-                                <li><i class="fas fa-check-circle"></i><span>Established a strong science foundation for later engineering study.</span></li>
-                                <li><i class="fas fa-check-circle"></i><span>Proved that consistency can compound into high performance.</span></li>
-                            </ul>
-                            <p class="education-testimonial"><span>My first milestone:</span> a reminder that strong fundamentals always matter.</p>
                         </div>
                     </div>
                 </article>
@@ -1189,11 +1078,145 @@
         </div>
     </section>
 
+    <!-- Technical Skills Section -->
+    <section id="skills" class="section">
+        <div class="container">
+            <div class="skills-container">
+                <div class="skills-header-block" data-aos="fade-up" data-aos-duration="900">
+                    <span class="section-subtitle"><i class="fas fa-cubes"></i> Technical Expertise</span>
+                    <h3 class="skills-main-title">TECHNICAL SKILLS</h3>
+                    <p class="section-description">A categorized showcase of my technical stack spanning AI/ML engineering, full-stack systems, databases, and modern developer tools.</p>
+                </div>
+
+                <div class="skills-3d-grid">
+                    <!-- 1. Languages Card -->
+                    <div class="skill-3d-card" data-aos="fade-up" data-aos-duration="900" data-aos-delay="100">
+                        <div class="skill-3d-card-inner">
+                            <div class="skill-card-header">
+                                <div class="skill-card-icon-wrap lang-accent">
+                                    <i class="fas fa-code"></i>
+                                </div>
+                                <h4>Languages</h4>
+                            </div>
+                            <div class="skill-badges-wrapper">
+                                <div class="skill-pill"><i class="fab fa-python" style="color: #3776AB;"></i> Python</div>
+                                <div class="skill-pill"><i class="fab fa-java" style="color: #ED8B00;"></i> Java</div>
+                                <div class="skill-pill"><i class="fas fa-code" style="color: #00599C;"></i> C++</div>
+                                <div class="skill-pill"><i class="fas fa-hashtag" style="color: #239120;"></i> C#</div>
+                                <div class="skill-pill"><i class="fab fa-js" style="color: #F7DF1E; background: #000; padding: 1px 3px; border-radius: 3px;"></i> JavaScript</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 2. Backend Card -->
+                    <div class="skill-3d-card" data-aos="fade-up" data-aos-duration="900" data-aos-delay="200">
+                        <div class="skill-3d-card-inner">
+                            <div class="skill-card-header">
+                                <div class="skill-card-icon-wrap backend-accent">
+                                    <i class="fas fa-server"></i>
+                                </div>
+                                <h4>Backend</h4>
+                            </div>
+                            <div class="skill-badges-wrapper">
+                                <div class="skill-pill"><i class="fas fa-flask" style="color: #008080;"></i> Flask</div>
+                                <div class="skill-pill"><i class="fas fa-leaf" style="color: #6DB33F;"></i> Spring Boot</div>
+                                <div class="skill-pill"><i class="fas fa-database" style="color: #D7001E;"></i> SQLAlchemy</div>
+                                <div class="skill-pill"><i class="fab fa-node-js" style="color: #339933;"></i> Node.js</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 3. Frontend Card -->
+                    <div class="skill-3d-card" data-aos="fade-up" data-aos-duration="900" data-aos-delay="300">
+                        <div class="skill-3d-card-inner">
+                            <div class="skill-card-header">
+                                <div class="skill-card-icon-wrap frontend-accent">
+                                    <i class="fas fa-laptop-code"></i>
+                                </div>
+                                <h4>Frontend</h4>
+                            </div>
+                            <div class="skill-badges-wrapper">
+                                <div class="skill-pill"><i class="fab fa-react" style="color: #61DAFB;"></i> React.js</div>
+                                <div class="skill-pill"><i class="fas fa-bolt" style="color: #0070F3;"></i> Next.js</div>
+                                <div class="skill-pill"><i class="fab fa-html5" style="color: #E34F26;"></i> HTML</div>
+                                <div class="skill-pill"><i class="fab fa-css3-alt" style="color: #1572B6;"></i> CSS</div>
+                                <div class="skill-pill"><i class="fab fa-wordpress" style="color: #21759B;"></i> WordPress</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 4. Databases Card -->
+                    <div class="skill-3d-card" data-aos="fade-up" data-aos-duration="900" data-aos-delay="400">
+                        <div class="skill-3d-card-inner">
+                            <div class="skill-card-header">
+                                <div class="skill-card-icon-wrap db-accent">
+                                    <i class="fas fa-database"></i>
+                                </div>
+                                <h4>Databases</h4>
+                            </div>
+                            <div class="skill-badges-wrapper">
+                                <div class="skill-pill"><i class="fas fa-leaf" style="color: #47A248;"></i> MongoDB</div>
+                                <div class="skill-pill"><i class="fas fa-database" style="color: #4169E1;"></i> PostgreSQL</div>
+                                <div class="skill-pill"><i class="fas fa-file-code" style="color: #003B57;"></i> SQLite</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 5. AI/ML Card -->
+                    <div class="skill-3d-card featured-ai-card" data-aos="fade-up" data-aos-duration="900" data-aos-delay="500">
+                        <div class="skill-3d-card-inner">
+                            <div class="skill-card-header">
+                                <div class="skill-card-icon-wrap ai-accent">
+                                    <i class="fas fa-brain"></i>
+                                </div>
+                                <h4>AI / ML</h4>
+                            </div>
+                            <div class="skill-badges-wrapper">
+                                <div class="skill-pill"><i class="fas fa-fire" style="color: #EE4C2C;"></i> PyTorch</div>
+                                <div class="skill-pill"><i class="fas fa-smile-beam" style="color: #FFD21E;"></i> Hugging Face</div>
+                                <div class="skill-pill"><i class="fas fa-project-diagram" style="color: #6C63FF;"></i> RAG</div>
+                                <div class="skill-pill"><i class="fas fa-eye" style="color: #5C3EE8;"></i> OpenCV</div>
+                                <div class="skill-pill"><i class="fas fa-bullseye" style="color: #00FFFF;"></i> YOLO</div>
+                                <div class="skill-pill"><i class="fas fa-hand-paper" style="color: #00C7B7;"></i> MediaPipe</div>
+                                <div class="skill-pill"><i class="fas fa-sliders-h" style="color: #FF4081;"></i> LLM Fine-Tuning</div>
+                                <div class="skill-pill"><i class="fas fa-search-plus" style="color: #43CEA2;"></i> FAISS - Vector Search</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 6. Tools Card -->
+                    <div class="skill-3d-card" data-aos="fade-up" data-aos-duration="900" data-aos-delay="600">
+                        <div class="skill-3d-card-inner">
+                            <div class="skill-card-header">
+                                <div class="skill-card-icon-wrap tools-accent">
+                                    <i class="fas fa-tools"></i>
+                                </div>
+                                <h4>Tools</h4>
+                            </div>
+                            <div class="skill-badges-wrapper">
+                                <div class="skill-pill"><i class="fab fa-git-alt" style="color: #F05032;"></i> Git</div>
+                                <div class="skill-pill"><i class="fab fa-docker" style="color: #2496ED;"></i> Docker</div>
+                                <div class="skill-pill"><i class="fab fa-linux" style="color: #FCC624;"></i> Linux</div>
+                                <div class="skill-pill"><i class="fas fa-network-wired" style="color: #FF6584;"></i> n8n</div>
+                                <div class="skill-pill"><i class="fab fa-figma" style="color: #F24E1E;"></i> Figma</div>
+                                <div class="skill-pill"><i class="fas fa-palette" style="color: #00C4CC;"></i> Canva</div>
+                                <div class="skill-pill"><i class="fas fa-cubes" style="color: #FF7C00;"></i> Gradio</div>
+                                <div class="skill-pill"><i class="fab fa-google" style="color: #F9AB00;"></i> Google Colab</div>
+                                <div class="skill-pill"><i class="fas fa-fire" style="color: #FFCA28;"></i> Firebase</div>
+                                <div class="skill-pill"><i class="fas fa-bolt" style="color: #3ECF8E;"></i> Supabase</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
 
     <!-- ------------------------------------- Volunteer Section ------------------------------------- -->
     <section id="volunteer" class="section">
         <div class="container">
-            <div class="section-title-container">
+            <div class="section-title-container" data-aos="fade-up">
                 <h2 class="section-title">Volunteering</h2>
                 <p class="section-description">
                     Community leadership and social impact initiatives.
@@ -1203,55 +1226,55 @@
             <div class="volunteer-grid">
                 <!-- Card 1: Team Lead -->
                 <div class="volunteer-card" data-aos="fade-up" data-aos-duration="800">
-                    <div class="volunteer-header">
-                        <div class="volunteer-title-area">
-                            <div class="volunteer-icon-wrapper">
-                                <i class="fas fa-users-cog"></i>
+                    <div class="volunteer-card-inner">
+                        <div class="volunteer-header">
+                            <div class="volunteer-title-area">
+                                <div class="volunteer-logo-wrap">
+                                    <img src="logos/entracloud_logo.jpeg" alt="entracloud logo">
+                                </div>
+                                <div>
+                                    <h3 class="volunteer-role">Team Lead</h3>
+                                    <p class="volunteer-organization">entracloud</p>
+                                </div>
                             </div>
-                            <div>
-                                <h3 class="volunteer-role">Team Lead</h3>
-                                <p class="volunteer-organization">entracloud</p>
-                            </div>
+                            <span class="volunteer-date"><i class="fas fa-calendar-alt"></i> April 2024 & 2025</span>
                         </div>
-                        <span class="volunteer-date"><i class="fas fa-calendar-alt"></i> April 2024 & 2025</span>
+                        <p class="volunteer-description">
+                            Attended JOB-FAIR-2025 as a Guest/Company Partner representing Entracloud at FAST-NUCES CFD.
+                            Collaborated with university organizers to support fresh tech talent.
+                        </p>
                     </div>
-                    <p class="volunteer-description">
-                        Attended JOB-FAIR-2025 as a Guest/Company Partner representing Entracloud at FAST-NUCES CFD.
-                        Collaborated with university organizers to support fresh tech talent.
-                    </p>
                 </div>
 
                 <!-- Card 2: Head of Palestine Desk -->
                 <div class="volunteer-card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
-                    <div class="volunteer-header">
-                        <div class="volunteer-title-area">
-                            <div class="volunteer-icon-wrapper">
-                                <i class="fas fa-hands-helping"></i>
+                    <div class="volunteer-card-inner">
+                        <div class="volunteer-header">
+                            <div class="volunteer-title-area">
+                                <div class="volunteer-logo-wrap">
+                                    <img src="logos/fast_logo.png" alt="FAST NUCES CFD Logo">
+                                </div>
+                                <div>
+                                    <h3 class="volunteer-role">Head of Palestine Desk</h3>
+                                    <p class="volunteer-organization">FAST NUCES CFD</p>
+                                </div>
                             </div>
-                            <div>
-                                <h3 class="volunteer-role">Head of Palestine Desk</h3>
-                                <p class="volunteer-organization">FAST NUCES CFD</p>
-                            </div>
+                            <span class="volunteer-date"><i class="fas fa-calendar-alt"></i> April 2025</span>
                         </div>
-                        <span class="volunteer-date"><i class="fas fa-calendar-alt"></i> April 2025</span>
+                        <p class="volunteer-description">
+                            Organized and managed the PALESTINE GHAZA donations drive during DAIRA-25. Raised community
+                            awareness and successfully collected charity funds for relief.
+                        </p>
                     </div>
-                    <p class="volunteer-description">
-                        Organized and managed the PALESTINE GHAZA donations drive during DAIRA-25. Raised community
-                        awareness and successfully collected charity funds for relief.
-                    </p>
                 </div>
             </div>
         </div>
     </section>
 
-
-
-
-
     <!-- Certificates Section -->
     <section id="certificates" class="section section-bg-muted">
         <div class="container">
-            <div class="section-title-container">
+            <div class="section-title-container" data-aos="fade-up">
                 <h2 class="section-title">Certifications & Awards</h2>
                 <p class="section-description">
                     Professional credentials, honors, and competitive achievements demonstrating specialized skills.
@@ -1265,93 +1288,123 @@
                     <div class="certificates-grid">
                         <!-- Verified Freelancer - PSEB -->
                         <div class="certificate-card">
-                            <div>
-                                <h3 class="certificate-title">Verified Freelancer</h3>
-                                <p class="certificate-issuer"><i class="fas fa-palette"></i> Pakistan Software Export Board - PSEB</p>
-                                <p class="certificate-date"><i class="fas fa-calendar-alt"></i> june 2026</p>
+                            <div class="certificate-card-inner">
+                                <div class="cert-header">
+                                    <div class="cert-logo-wrap">
+                                        <i class="fas fa-building-columns" style="color: #008080;"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="certificate-title">Verified Freelancer</h3>
+                                        <p class="certificate-issuer"><i class="fas fa-award"></i> Pakistan Software Export Board - PSEB</p>
+                                    </div>
+                                </div>
+                                <p class="certificate-date"><i class="fas fa-calendar-alt"></i> June 2026</p>
                                 <p class="certificate-details">Verified Freelancer certified by Pakistan Software Export Board, demonstrating professional freelancing skills and industry credibility.</p>
+                                <a href="https://portal.techdestination.com/verify-certificate/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZWdpc3RyYXRpb25ObyI6IkZMMjEvUFNFQi8yMDI2LzI2NTA3IiwidHlwZSI6ImZyZWVsYW5jZXIiLCJpYXQiOjE3ODA5MjUzOTIsImV4cCI6MTc4ODcwMTM5Mn0.DSxDz-VLDeXQxf40NXR--490ogp3YpOj8cfloqj39kM" target="_blank" rel="noopener noreferrer" class="certificate-link">
+                                    <i class="fas fa-award"></i> View Credential
+                                </a>
                             </div>
-                            <a href="https://portal.techdestination.com/verify-certificate/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZWdpc3RyYXRpb25ObyI6IkZMMjEvUFNFQi8yMDI2LzI2NTA3IiwidHlwZSI6ImZyZWVsYW5jZXIiLCJpYXQiOjE3ODA5MjUzOTIsImV4cCI6MTc4ODcwMTM5Mn0.DSxDz-VLDeXQxf40NXR--490ogp3YpOj8cfloqj39kM" target="_blank" rel="noopener noreferrer" class="certificate-link">
-                                <i class="fas fa-award"></i> View Credential
-                            </a>
                         </div>
 
                         <!-- Git & GitHub - Google -->
                         <div class="certificate-card">
-                            <div>
-                                <h3 class="certificate-title">Git & GitHub</h3>
-                                <p class="certificate-issuer"><i class="fab fa-google"></i> Google & Coursera</p>
+                            <div class="certificate-card-inner">
+                                <div class="cert-header">
+                                    <div class="cert-logo-wrap">
+                                        <i class="fab fa-google" style="color: #4285F4;"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="certificate-title">Git & GitHub</h3>
+                                        <p class="certificate-issuer"><i class="fab fa-google"></i> Google & Coursera</p>
+                                    </div>
+                                </div>
                                 <p class="certificate-date"><i class="fas fa-calendar-alt"></i> 2025</p>
-                                <p class="certificate-details">Certified in advanced version control, repository
-                                    management, branch merging workflows, and standard team collaboration practices.</p>
+                                <p class="certificate-details">Certified in advanced version control, repository management, branch merging workflows, and standard team collaboration practices.</p>
+                                <a href="https://www.coursera.org/account/accomplishments/certificate/DZ8JGT5UQ7Y3" target="_blank" rel="noopener noreferrer" class="certificate-link">
+                                    <i class="fas fa-external-link-alt"></i> View Credential
+                                </a>
                             </div>
-                            <a href="https://www.coursera.org/account/accomplishments/certificate/DZ8JGT5UQ7Y3" target="_blank" rel="noopener noreferrer"
-                                class="certificate-link">
-                                <i class="fas fa-external-link-alt"></i> View Credential
-                            </a>
                         </div>
 
                         <!-- Deep Learning Specialization - Udemy -->
                         <div class="certificate-card">
-                            <div>
-                                <h3 class="certificate-title">Deep Learning Specialization</h3>
-                                <p class="certificate-issuer"><i class="fas fa-university"></i> Udemy</p>
+                            <div class="certificate-card-inner">
+                                <div class="cert-header">
+                                    <div class="cert-logo-wrap">
+                                        <i class="fas fa-graduation-cap" style="color: #A435F0;"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="certificate-title">Deep Learning Specialization</h3>
+                                        <p class="certificate-issuer"><i class="fas fa-university"></i> Udemy</p>
+                                    </div>
+                                </div>
                                 <p class="certificate-date"><i class="fas fa-calendar-alt"></i> 2025</p>
-                                <p class="certificate-details">Deep-dive training in Neural Networks, Backpropagation
-                                    optimization, CNNs for computer vision, and LSTM/RNN architectures.</p>
+                                <p class="certificate-details">Deep-dive training in Neural Networks, Backpropagation optimization, CNNs for computer vision, and LSTM/RNN architectures.</p>
+                                <a href="https://www.udemy.com" target="_blank" rel="noopener noreferrer" class="certificate-link">
+                                    <i class="fas fa-external-link-alt"></i> View Credential
+                                </a>
                             </div>
-                            <a href="https://www.udemy.com" target="_blank" rel="noopener noreferrer"
-                                class="certificate-link">
-                                <i class="fas fa-external-link-alt"></i> View Credential
-                            </a>
                         </div>
 
                         <!-- Python and Flask - Udemy -->
                         <div class="certificate-card">
-                            <div>
-                                <h3 class="certificate-title">Python and Flask</h3>
-                                <p class="certificate-issuer"><i class="fab fa-python"></i> Udemy</p>
+                            <div class="certificate-card-inner">
+                                <div class="cert-header">
+                                    <div class="cert-logo-wrap">
+                                        <i class="fab fa-python" style="color: #3776AB;"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="certificate-title">Python and Flask</h3>
+                                        <p class="certificate-issuer"><i class="fab fa-python"></i> Udemy</p>
+                                    </div>
+                                </div>
                                 <p class="certificate-date"><i class="fas fa-calendar-alt"></i> 2025</p>
-                                <p class="certificate-details">Mastered full-stack development using Flask,
-                                    SQL/SQLAlchemy database models, RESTful API design, and user authentication.</p>
+                                <p class="certificate-details">Mastered full-stack development using Flask, SQL/SQLAlchemy database models, RESTful API design, and user authentication.</p>
+                                <a href="https://www.udemy.com" target="_blank" rel="noopener noreferrer" class="certificate-link">
+                                    <i class="fas fa-external-link-alt"></i> View Credential
+                                </a>
                             </div>
-                            <a href="https://www.udemy.com" target="_blank" rel="noopener noreferrer"
-                                class="certificate-link">
-                                <i class="fas fa-external-link-alt"></i> View Credential
-                            </a>
                         </div>
 
                         <!-- Machine Learning Foundations - AWS -->
                         <div class="certificate-card">
-                            <div>
-                                <h3 class="certificate-title">Machine Learning Foundations</h3>
-                                <p class="certificate-issuer"><i class="fab fa-aws"></i> Amazon Web Services (AWS)</p>
+                            <div class="certificate-card-inner">
+                                <div class="cert-header">
+                                    <div class="cert-logo-wrap">
+                                        <i class="fab fa-aws" style="color: #FF9900;"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="certificate-title">Machine Learning Foundations</h3>
+                                        <p class="certificate-issuer"><i class="fab fa-aws"></i> Amazon Web Services (AWS)</p>
+                                    </div>
+                                </div>
                                 <p class="certificate-date"><i class="fas fa-calendar-alt"></i> April 2025</p>
-                                <p class="certificate-details">Explored core ML models, math fundamentals, feature
-                                    engineering, and cloud deployment pipelines utilizing Amazon SageMaker.</p>
+                                <p class="certificate-details">Explored core ML models, math fundamentals, feature engineering, and cloud deployment pipelines utilizing Amazon SageMaker.</p>
+                                <a href="https://www.credly.com/badges/222b7f9e-bf43-4bb8-9113-3adc35b40a18/public_url" target="_blank" rel="noopener noreferrer" class="certificate-link">
+                                    <i class="fas fa-external-link-alt"></i> View Credential
+                                </a>
                             </div>
-                            <a href="https://www.credly.com/badges/222b7f9e-bf43-4bb8-9113-3adc35b40a18/public_url"
-                                target="_blank" rel="noopener noreferrer" class="certificate-link">
-                                <i class="fas fa-external-link-alt"></i> View Credential
-                            </a>
                         </div>
 
                         <!-- WordPress - Digiskills -->
                         <div class="certificate-card">
-                            <div>
-                                <h3 class="certificate-title">WordPress Website Development</h3>
-                                <p class="certificate-issuer"><i class="fab fa-wordpress"></i> Digiskills</p>
+                            <div class="certificate-card-inner">
+                                <div class="cert-header">
+                                    <div class="cert-logo-wrap">
+                                        <i class="fab fa-wordpress" style="color: #21759B;"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="certificate-title">WordPress Website Development</h3>
+                                        <p class="certificate-issuer"><i class="fab fa-wordpress"></i> Digiskills</p>
+                                    </div>
+                                </div>
                                 <p class="certificate-date"><i class="fas fa-calendar-alt"></i> December 2023</p>
-                                <p class="certificate-details">3-month extensive program focusing on custom themes, page
-                                    builders, WooCommerce setups, and SEO optimization.</p>
+                                <p class="certificate-details">3-month extensive program focusing on custom themes, page builders, WooCommerce setups, and SEO optimization.</p>
+                                <a href="https://digiskills.pk/verify/WJ3GT9MK" target="_blank" rel="noopener noreferrer" class="certificate-link">
+                                    <i class="fas fa-external-link-alt"></i> View Credential
+                                </a>
                             </div>
-                            <a href="https://digiskills.pk/verify/WJ3GT9MK" target="_blank" rel="noopener noreferrer"
-                                class="certificate-link">
-                                <i class="fas fa-external-link-alt"></i> View Credential
-                            </a>
                         </div>
-
-                        
                     </div>
                 </div>
 
@@ -1361,59 +1414,81 @@
                     <div class="awards-list">
                         <!-- NeuroSecure Winner -->
                         <div class="award-card">
-                            <span class="award-badge">Winner</span>
-                            <div class="award-icon-box">
-                                <i class="fas fa-trophy" style="color: #ffd700;"></i>
-                            </div>
-                            <div class="award-content">
-                                <h3 class="award-title">1st Position - Idea Competition</h3>
-                                <p class="award-org"><i class="fas fa-university"></i> FAST-NUCES</p>
-                                <p class="award-description">Secured first place for presenting and pitching
-                                    "NeuroSecure" — a real-time AI privacy system leveraging OpenCV, YOLO, and MediaPipe
-                                    to block shoulder-surfing threats.</p>
+                            <div class="award-card-inner">
+                                <span class="award-badge">Winner</span>
+                                <div class="award-top-row">
+                                    <div class="award-logo-wrap">
+                                        <img src="logos/fast_logo.png" alt="FAST-NUCES Logo">
+                                    </div>
+                                    <div class="award-icon-box">
+                                        <i class="fas fa-trophy" style="color: #ffd700;"></i>
+                                    </div>
+                                </div>
+                                <div class="award-content">
+                                    <h3 class="award-title">1st Position - Idea Competition</h3>
+                                    <p class="award-org"><i class="fas fa-university"></i> FAST-NUCES</p>
+                                    <p class="award-description">Secured first place for presenting and pitching "NeuroSecure" — a real-time AI privacy system leveraging OpenCV, YOLO, and MediaPipe to block shoulder-surfing threats.</p>
+                                </div>
                             </div>
                         </div>
 
                         <!-- Dean List of Honors -->
                         <div class="award-card">
-                            <span class="award-badge">Dean List of Honors</span>
-                            <div class="award-icon-box">
-                                <i class="fas fa-medal" style="color: #43cea2;"></i>
-                            </div>
-                            <div class="award-content">
-                                <h3 class="award-title">Dean List of Honors</h3>
-                                <p class="award-org"><i class="fas fa-laptop-code"></i> FAST-NUCES</p>
-                                <p class="award-description">Got a CGPA of 3.6+ in my last semester,  
-                                    consistently ranking among the top students in my class.</p>
+                            <div class="award-card-inner">
+                                <span class="award-badge">Dean List of Honors</span>
+                                <div class="award-top-row">
+                                    <div class="award-logo-wrap">
+                                        <img src="logos/fast_logo.png" alt="FAST-NUCES Logo">
+                                    </div>
+                                    <div class="award-icon-box">
+                                        <i class="fas fa-medal" style="color: #43cea2;"></i>
+                                    </div>
+                                </div>
+                                <div class="award-content">
+                                    <h3 class="award-title">Dean List of Honors</h3>
+                                    <p class="award-org"><i class="fas fa-laptop-code"></i> FAST-NUCES</p>
+                                    <p class="award-description">Got a CGPA of 3.6+ in my last semester, consistently ranking among the top students in my class.</p>
+                                </div>
                             </div>
                         </div>
 
                         <!-- Vine-a-thon -->
                         <div class="award-card">
-                            <span class="award-badge">3rd Place</span>
-                            <div class="award-icon-box">
-                                <i class="fas fa-award" style="color: #ff8c00;"></i>
-                            </div>
-                            <div class="award-content">
-                                <h3 class="award-title">3rd Position - Vine-a-thon Hackathon</h3>
-                                <p class="award-org"><i class="fab fa-google"></i> Google Developers Group (GDG)</p>
-                                <p class="award-description">Ranked third place in the Google Developer Students
-                                    Competition for rapid prototype design and software engineering innovation.</p>
+                            <div class="award-card-inner">
+                                <span class="award-badge">3rd Place</span>
+                                <div class="award-top-row">
+                                    <div class="award-logo-wrap">
+                                        <i class="fab fa-google" style="color: #4285F4;"></i>
+                                    </div>
+                                    <div class="award-icon-box">
+                                        <i class="fas fa-award" style="color: #ff8c00;"></i>
+                                    </div>
+                                </div>
+                                <div class="award-content">
+                                    <h3 class="award-title">3rd Position - Vine-a-thon Hackathon</h3>
+                                    <p class="award-org"><i class="fab fa-google"></i> Google Developers Group (GDG)</p>
+                                    <p class="award-description">Ranked third place in the Google Developer Students Competition for rapid prototype design and software engineering innovation.</p>
+                                </div>
                             </div>
                         </div>
 
                         <!-- ICPC -->
                         <div class="award-card">
-                            <span class="award-badge">Round II</span>
-                            <div class="award-icon-box">
-                                <i class="fas fa-code"></i>
-                            </div>
-                            <div class="award-content">
-                                <h3 class="award-title">Round II Qualifier - ICPC 2026</h3>
-                                <p class="award-org"><i class="fas fa-trophy"></i> International Collegiate Programming
-                                    Contest</p>
-                                <p class="award-description">Successfully advanced to the second regional round of the
-                                    prestigious global algorithmic problem-solving competition.</p>
+                            <div class="award-card-inner">
+                                <span class="award-badge">Round II</span>
+                                <div class="award-top-row">
+                                    <div class="award-logo-wrap">
+                                        <i class="fas fa-trophy" style="color: #FFD700;"></i>
+                                    </div>
+                                    <div class="award-icon-box">
+                                        <i class="fas fa-code"></i>
+                                    </div>
+                                </div>
+                                <div class="award-content">
+                                    <h3 class="award-title">Round II Qualifier - ICPC 2026</h3>
+                                    <p class="award-org"><i class="fas fa-trophy"></i> International Collegiate Programming Contest</p>
+                                    <p class="award-description">Successfully advanced to the second regional round of the prestigious global algorithmic problem-solving competition.</p>
+                                </div>
                             </div>
                         </div>
                     </div>

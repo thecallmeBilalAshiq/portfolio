@@ -606,3 +606,30 @@ Redirecting to direct contact form to initiate hiring! Get ready...`;
             // Auto-scroll to bottom of terminal
             terminalBody.scrollTop = terminalBody.scrollHeight;
         }
+
+// ==========================================
+// 3D Interactive Mouse Tilt Effect for Cards
+// ==========================================
+document.addEventListener('DOMContentLoaded', () => {
+    const interactive3dCards = document.querySelectorAll('.skill-3d-card, .volunteer-card, .certificate-card, .award-card');
+    
+    interactive3dCards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            
+            // Calculate tilt angle based on cursor offset from center
+            const rotateX = ((y - centerY) / centerY) * -10;
+            const rotateY = ((x - centerX) / centerX) * 10;
+
+            card.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateZ(10px)`;
+        });
+
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0px)';
+        });
+    });
+});

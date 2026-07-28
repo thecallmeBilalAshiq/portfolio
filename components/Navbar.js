@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { playClickSound } from '@/utils/sound';
@@ -8,50 +8,59 @@ import { playClickSound } from '@/utils/sound';
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [hidden, setHidden] = useState(false);
+  const [activeSection, setActiveSection] = useState('home');
   const pathname = usePathname();
-  const lastScrollY = useRef(0);
 
+  const isHomePage = pathname === '/';
+
+  const navItems = [
+    { name: 'Home', sectionId: 'home', pagePath: '/' },
+    { name: 'About', sectionId: 'about', pagePath: '/about' },
+    { name: 'Education', sectionId: 'education', pagePath: '/education' },
+    { name: 'Experience', sectionId: 'experience', pagePath: '/experience' },
+    { name: 'Projects', sectionId: 'projects', pagePath: '/projects' },
+    { name: 'Skills', sectionId: 'skills', pagePath: '/skills' },
+    { name: 'Volunteer', sectionId: 'volunteer', pagePath: '/volunteer' },
+    { name: 'Certificates', sectionId: 'certificates', pagePath: '/certificates' },
+    { name: 'Contact', sectionId: 'contact', pagePath: '/contact' },
+    { name: 'Gallery', sectionId: 'gallery', pagePath: '/gallery' }
+  ];
+
+  // Scroll spy & navbar background shadow toggle
   useEffect(() => {
     const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      
-      // Toggle scrolled state
-      if (currentScrollY > 40) {
+      if (window.scrollY > 30) {
         setScrolled(true);
       } else {
         setScrolled(false);
       }
 
-      // Hide / Show on scroll down / up
-      if (currentScrollY > 150 && currentScrollY > lastScrollY.current + 5) {
-        setHidden(true);
-      } else if (currentScrollY < lastScrollY.current - 5) {
-        setHidden(false);
-      }
+      // Scroll Spy for Home Page Sections
+      if (isHomePage) {
+        const sections = navItems
+          .map((item) => document.getElementById(item.sectionId))
+          .filter(Boolean);
 
-      lastScrollY.current = currentScrollY;
+        const scrollPosition = window.scrollY + 200;
+
+        for (let i = sections.length - 1; i >= 0; i--) {
+          const section = sections[i];
+          if (section.offsetTop <= scrollPosition) {
+            setActiveSection(section.id);
+            break;
+          }
+        }
+      }
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [isHomePage]);
 
-  const pagesNav = [
-    { name: 'Home', path: '/' },
-    { name: 'About', path: '/about' },
-    { name: 'Education', path: '/education' },
-    { name: 'Experience', path: '/experience' },
-    { name: 'Projects', path: '/projects' },
-    { name: 'Skills', path: '/skills' },
-    { name: 'Volunteer', path: '/volunteer' },
-    { name: 'Certificates', path: '/certificates' },
-    { name: 'Gallery', path: '/gallery' },
-    { name: 'Contact', path: '/contact' }
-  ];
-
-  const handleLinkClick = () => {
+  const handleNavClick = (sectionId) => {
     playClickSound();
+    setActiveSection(sectionId);
     if (mobileMenuOpen) {
       setMobileMenuOpen(false);
     }
@@ -63,30 +72,31 @@ export default function Navbar() {
   };
 
   return (
-    <header
-      className={`header-sticky ${scrolled ? 'header-scrolled' : ''} ${hidden ? 'header-hidden' : ''}`}
-      id="header"
-      role="banner"
-    >
+    <header className={`header-sticky ${scrolled ? 'header-scrolled' : ''}`} id="header" role="banner">
       <div className="container">
         <nav className="navbar-container" aria-label="Main Navigation">
-          <Link href="/" className="navbar-brand-serif" onClick={handleLinkClick}>
+          <Link href="/" className="navbar-brand-serif" onClick={() => handleNavClick('home')}>
             Bilal<span className="brand-accent">Ashiq</span>
           </Link>
 
           <ul className="nav-menu-serif" role="menubar">
-            {pagesNav.map((link) => {
-              const isActive = pathname === link.path;
+            {navItems.map((item) => {
+              const isSectionActive = isHomePage && activeSection === item.sectionId;
+              const isPageActive = !isHomePage && pathname === item.pagePath;
+              const isActive = isSectionActive || isPageActive;
+
+              const href = isHomePage ? `#${item.sectionId}` : item.pagePath;
+
               return (
-                <li key={link.path} className="nav-item-serif" role="none">
+                <li key={item.name} className="nav-item-serif" role="none">
                   <Link
-                    href={link.path}
+                    href={href}
                     role="menuitem"
                     aria-current={isActive ? 'page' : undefined}
                     className={`nav-link-serif ${isActive ? 'active' : ''}`}
-                    onClick={handleLinkClick}
+                    onClick={() => handleNavClick(item.sectionId)}
                   >
-                    <span className="nav-link-text">{link.name}</span>
+                    <span className="nav-link-text">{item.name}</span>
                     {isActive && <span className="active-dot-glow"></span>}
                   </Link>
                 </li>
@@ -98,7 +108,7 @@ export default function Navbar() {
             <button
               id="mobile-menu-btn"
               className={`mobile-hamburger ${mobileMenuOpen ? 'open' : ''}`}
-              aria-label="Toggle Navigation Menu"
+              aria-label="Toggle mobile menu"
               aria-expanded={mobileMenuOpen}
               onClick={toggleMobileMenu}
             >
@@ -110,38 +120,32 @@ export default function Navbar() {
         </nav>
       </div>
 
-      {/* Mobile Navigation Drawer */}
-      <div className={`mobile-menu-drawer ${mobileMenuOpen ? 'active' : ''}`} id="mobile-menu">
-        <div className="mobile-drawer-header">
-          <Link href="/" className="navbar-brand-serif" onClick={handleLinkClick}>
-            Bilal<span className="brand-accent">Ashiq</span>
-          </Link>
-        </div>
-        <ul className="mobile-nav-list">
-          {pagesNav.map((link) => {
-            const isActive = pathname === link.path;
+      {/* Mobile Menu Drawer */}
+      <div className={`mobile-menu-drawer ${mobileMenuOpen ? 'open' : ''}`}>
+        <ul className="mobile-menu-list">
+          {navItems.map((item) => {
+            const isSectionActive = isHomePage && activeSection === item.sectionId;
+            const isPageActive = !isHomePage && pathname === item.pagePath;
+            const isActive = isSectionActive || isPageActive;
+            const href = isHomePage ? `#${item.sectionId}` : item.pagePath;
+
             return (
-              <li key={link.path}>
+              <li key={item.name}>
                 <Link
-                  href={link.path}
-                  className={`mobile-nav-link-serif ${isActive ? 'active' : ''}`}
-                  onClick={handleLinkClick}
+                  href={href}
+                  className={`mobile-nav-link ${isActive ? 'active' : ''}`}
+                  onClick={() => handleNavClick(item.sectionId)}
                 >
-                  <span>{link.name}</span>
-                  {isActive && <i className="fas fa-chevron-right active-arrow"></i>}
+                  <span>{item.name}</span>
+                  {isActive && <i className="fas fa-chevron-right"></i>}
                 </Link>
               </li>
             );
           })}
         </ul>
       </div>
-
       {mobileMenuOpen && (
-        <div
-          className="mobile-drawer-backdrop active"
-          onClick={toggleMobileMenu}
-          aria-hidden="true"
-        ></div>
+        <div className="mobile-menu-backdrop" onClick={() => setMobileMenuOpen(false)}></div>
       )}
     </header>
   );

@@ -21,21 +21,30 @@ export default function HeroSection() {
   };
 
   return (
-    <section id="home" className="hero">
+    <section id="home" className="hero hero-animated-bg">
+      {/* Animated background glowing orbs */}
+      <div className="hero-glow-orb hero-glow-orb-1"></div>
+      <div className="hero-glow-orb hero-glow-orb-2"></div>
+      <div className="hero-glow-orb hero-glow-orb-3"></div>
+
       <div id="particles-js" className="hero-particles"></div>
-      <div className="hero-glow-orb"></div>
+
       <div className="container">
         <div className="hero-grid">
           <div className="hero-content" data-aos="fade-up" data-aos-duration="1000">
-            <div className="status-pill">
+            <div className="status-pill animated-status-pill">
               <span className="status-dot"></span>
               <span>Open to Work: AI / ML Engineer & Software Developer</span>
             </div>
+
             <p className="hero-greeting">Hi, my name is</p>
+
             <h1 className="hero-title">
-              Muhammad <span className="text-gradient">Bilal Ashiq</span>
+              Muhammad <span className="text-gradient animated-gradient-text">Bilal Ashiq</span>
             </h1>
+
             <h2 className="hero-subtitle">AI, ML & Software Engineer</h2>
+
             <div className="hero-description">
               <img
                 src="https://readme-typing-svg.herokuapp.com?color=%23FF4B8B&size=30&center=true&vCenter=true&width=650&lines=Hello!+I'm+Muhammad+Bilal+Ashiq;+AI+%26+Machine+Learning+Engineer;💻+Software+Developer;🎯+Tech+Innovator+%26+Educator;💡+Building+Intelligent+Systems"
@@ -43,14 +52,16 @@ export default function HeroSection() {
                 style={{ maxWidth: '100%', height: 'auto' }}
               />
             </div>
+
             <div className="hero-buttons">
-              <Link href="/contact" className="btn btn-primary">
+              <Link href="/contact" className="btn btn-primary btn-pulse-glow">
                 Get In Touch
               </Link>
-              <Link href="/projects" className="btn btn-outline">
+              <Link href="/projects" className="btn btn-outline btn-glass-hover">
                 View Projects
               </Link>
             </div>
+
             <div className="social-links">
               <a
                 href="https://github.com/thecallmeBilalAshiq"
@@ -80,7 +91,7 @@ export default function HeroSection() {
           </div>
 
           <div className="hero-image-container" data-aos="zoom-in" data-aos-duration="1000">
-            <div className="hero-image-wrapper">
+            <div className="hero-image-wrapper hero-video-glow-frame">
               <div className="hero-image-bg"></div>
               <video
                 ref={videoRef}

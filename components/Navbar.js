@@ -16,8 +16,8 @@ export default function Navbar() {
   const navItems = [
     { name: 'Home', sectionId: 'home', pagePath: '/' },
     { name: 'About', sectionId: 'about', pagePath: '/about' },
-    { name: 'Education', sectionId: 'education', pagePath: '/education' },
     { name: 'Experience', sectionId: 'experience', pagePath: '/experience' },
+    { name: 'Education', sectionId: 'education', pagePath: '/education' },
     { name: 'Projects', sectionId: 'projects', pagePath: '/projects' },
     { name: 'Skills', sectionId: 'skills', pagePath: '/skills' },
     { name: 'Volunteer', sectionId: 'volunteer', pagePath: '/volunteer' },

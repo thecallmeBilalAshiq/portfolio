@@ -4,8 +4,8 @@ import { useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import HeroSection from '@/sections/HeroSection';
 import AboutSection from '@/sections/AboutSection';
-import EducationSection from '@/sections/EducationSection';
 import ExperienceSection from '@/sections/ExperienceSection';
+import EducationSection from '@/sections/EducationSection';
 import ProjectsSection from '@/sections/ProjectsSection';
 import SkillsSection from '@/sections/SkillsSection';
 import VolunteerSection from '@/sections/VolunteerSection';
@@ -73,8 +73,8 @@ export default function Home() {
 
       <HeroSection />
       <AboutSection />
-      <EducationSection />
       <ExperienceSection />
+      <EducationSection />
       <ProjectsSection />
       <SkillsSection />
       <VolunteerSection />

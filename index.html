@@ -209,28 +209,36 @@
 
             <!-- Photo Carousel -->
             <div class="about-photo-carousel" data-aos="fade-up" data-aos-duration="1000">
-                <h4 class="about-carousel-title">Moments & Memories</h4>
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.25rem; padding: 0 0.5rem;">
+                    <h4 class="about-carousel-title" style="margin: 0; text-align: left;">
+                        <a href="/gallery" style="color: inherit; text-decoration: none; display: inline-flex; align-items: center; gap: 0.6rem;">
+                            <span>Gallery & Highlights</span>
+                            <i class="fas fa-arrow-right" style="font-size: 0.85em; color: var(--primary);"></i>
+                        </a>
+                    </h4>
+                    <div style="display: flex; gap: 0.6rem; z-index: 5;">
+                        <button id="carouselPrev" class="carousel-nav-btn" aria-label="Scroll left"><i class="fas fa-chevron-left"></i></button>
+                        <button id="carouselNext" class="carousel-nav-btn" aria-label="Scroll right"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                </div>
                 <div class="about-carousel-track-wrapper">
-                    <div class="about-carousel-track" id="aboutCarouselTrack">
-                        <div class="about-carousel-item"><img src="./photos/photo_1.jpeg" alt="Photo 1"></div>
-                        <div class="about-carousel-item"><img src="./photos/photo_2.jpeg" alt="Photo 2"></div>
-                        <div class="about-carousel-item"><img src="./photos/photo_3.png" alt="Photo 3"></div>
-                        <div class="about-carousel-item"><img src="./photos/photo_4.jpeg" alt="Photo 4"></div>
-                        <div class="about-carousel-item"><img src="./photos/photo_5.png" alt="Photo 5"></div>
-                        <div class="about-carousel-item"><img src="./photos/photo_6.png" alt="Photo 6"></div>
-                        <div class="about-carousel-item"><img src="./photos/photo_7.jpeg" alt="Photo 7"></div>
-                        <div class="about-carousel-item"><img src="./photos/photo_8.jpeg" alt="Photo 8"></div>
-                        <div class="about-carousel-item"><img src="./photos/photo_9.jpeg" alt="Photo 9"></div>
-                        <!-- Duplicated for seamless loop -->
-                        <div class="about-carousel-item"><img src="./photos/photo_1.jpeg" alt="Photo 1"></div>
-                        <div class="about-carousel-item"><img src="./photos/photo_2.jpeg" alt="Photo 2"></div>
-                        <div class="about-carousel-item"><img src="./photos/photo_3.png" alt="Photo 3"></div>
-                        <div class="about-carousel-item"><img src="./photos/photo_4.jpeg" alt="Photo 4"></div>
-                        <div class="about-carousel-item"><img src="./photos/photo_5.png" alt="Photo 5"></div>
-                        <div class="about-carousel-item"><img src="./photos/photo_6.png" alt="Photo 6"></div>
-                        <div class="about-carousel-item"><img src="./photos/photo_7.jpeg" alt="Photo 7"></div>
-                        <div class="about-carousel-item"><img src="./photos/photo_8.jpeg" alt="Photo 8"></div>
-                        <div class="about-carousel-item"><img src="./photos/photo_9.jpeg" alt="Photo 9"></div>
+                    <div class="about-carousel-track scrollable" id="aboutCarouselTrack">
+                        <a href="/gallery" class="about-carousel-item portrait"><img src="./gallery/Head Palestine Desk.jpg" alt="Muhammad Bilal Ashiq - Leadership"><div class="about-carousel-caption"><span>Muhammad Bilal Ashiq - Leadership</span></div></a>
+                        <a href="/gallery" class="about-carousel-item landscape"><img src="./gallery/At FAST Islamabad Job FAIR.png" alt="Bilal Ashiq at FAST Islamabad Job Fair"><div class="about-carousel-caption"><span>FAST Islamabad Job Fair</span></div></a>
+                        <a href="/gallery" class="about-carousel-item landscape"><img src="./gallery/Job Fair 2025.jpg" alt="Bilal Ashiq at FAST NUCES Job Fair 2025"><div class="about-carousel-caption"><span>FAST NUCES Job Fair 2025</span></div></a>
+                        <a href="/gallery" class="about-carousel-item portrait"><img src="./gallery/QAU Memory.jpeg" alt="Bilal Ashiq at QAU"><div class="about-carousel-caption"><span>Quaid-i-Azam University</span></div></a>
+                        <a href="/gallery" class="about-carousel-item portrait"><img src="./gallery/COLABS.jpeg" alt="Bilal Ashiq at COLABS Tech Incubator"><div class="about-carousel-caption"><span>COLABS Tech Incubator</span></div></a>
+                        <a href="/gallery" class="about-carousel-item landscape"><img src="./gallery/ICPC Competition - PUCIT Lahore.jpg" alt="Bilal Ashiq at ICPC Competition"><div class="about-carousel-caption"><span>ICPC Competition PUCIT</span></div></a>
+                        <a href="/gallery" class="about-carousel-item landscape"><img src="./gallery/NIC - AI Internship - Nationa Incubation center.jpg" alt="Bilal Ashiq at NIC AI Internship"><div class="about-carousel-caption"><span>NIC AI Internship</span></div></a>
+                        <a href="/gallery" class="about-carousel-item portrait"><img src="./gallery/Presentation Winner.jpeg" alt="Bilal Ashiq Presentation Winner"><div class="about-carousel-caption"><span>Presentation Winner</span></div></a>
+                        <a href="/gallery" class="about-carousel-item landscape"><img src="./gallery/Programmer Forces.jpg" alt="Bilal Ashiq at Programmer Force"><div class="about-carousel-caption"><span>Programmer Force Visit</span></div></a>
+                        <a href="/gallery" class="about-carousel-item landscape"><img src="./gallery/Yieldwerx semicondotor company - Last round interview.jpg" alt="Bilal Ashiq at Yieldwerx"><div class="about-carousel-caption"><span>Yieldwerx Interview Round</span></div></a>
+                        <a href="/gallery" class="about-carousel-item landscape"><img src="./gallery/Devsinc.jpg" alt="Bilal Ashiq at Devsinc"><div class="about-carousel-caption"><span>Devsinc Tech Visit</span></div></a>
+                        <a href="/gallery" class="about-carousel-item landscape"><img src="./gallery/Invozone compay.jpg" alt="Bilal Ashiq at Invozone"><div class="about-carousel-caption"><span>Invozone Company</span></div></a>
+                        <a href="/gallery" class="about-carousel-item landscape"><img src="./gallery/Seminar - AMNESTY - Women Empowerment.jpeg" alt="Bilal Ashiq hosting Amnesty Seminar"><div class="about-carousel-caption"><span>Amnesty International Seminar</span></div></a>
+                        <a href="/gallery" class="about-carousel-item landscape"><img src="./gallery/Winning NeuroSecure Team.jpeg" alt="Bilal Ashiq with Winning AI Team"><div class="about-carousel-caption"><span>Winning NeuroSecure AI Team</span></div></a>
+                        <a href="/gallery" class="about-carousel-item portrait"><img src="./gallery/Verified freelancer of pakistan.jpeg" alt="Bilal Ashiq Verified Freelancer"><div class="about-carousel-caption"><span>Verified Freelancer Award</span></div></a>
+                        <a href="/gallery" class="about-carousel-item landscape"><img src="./gallery/COLABS PK Team at ZORO Lahore.jpeg" alt="Bilal Ashiq with COLABS Team"><div class="about-carousel-caption"><span>COLABS Team at ZORO</span></div></a>
                     </div>
                 </div>
             </div>
@@ -1712,6 +1720,22 @@
             </button>
         </div>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var track = document.getElementById('aboutCarouselTrack');
+            var prevBtn = document.getElementById('carouselPrev');
+            var nextBtn = document.getElementById('carouselNext');
+            if (track && prevBtn && nextBtn) {
+                prevBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    track.scrollBy({ left: -420, behavior: 'smooth' });
+                });
+                nextBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    track.scrollBy({ left: 420, behavior: 'smooth' });
+                });
+            }
+        });
+    </script>
 </body>
-
 </html>

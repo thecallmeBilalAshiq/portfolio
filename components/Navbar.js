@@ -85,7 +85,7 @@ export default function Navbar() {
               const isPageActive = !isHomePage && pathname === item.pagePath;
               const isActive = isSectionActive || isPageActive;
 
-              const href = isHomePage ? `#${item.sectionId}` : item.pagePath;
+              const href = (isHomePage && item.pagePath !== '/gallery') ? `#${item.sectionId}` : item.pagePath;
 
               return (
                 <li key={item.name} className="nav-item-serif" role="none">
@@ -127,7 +127,7 @@ export default function Navbar() {
             const isSectionActive = isHomePage && activeSection === item.sectionId;
             const isPageActive = !isHomePage && pathname === item.pagePath;
             const isActive = isSectionActive || isPageActive;
-            const href = isHomePage ? `#${item.sectionId}` : item.pagePath;
+            const href = (isHomePage && item.pagePath !== '/gallery') ? `#${item.sectionId}` : item.pagePath;
 
             return (
               <li key={item.name}>

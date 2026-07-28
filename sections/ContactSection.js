@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import SectionTitle from '@/components/SectionTitle';
 
 export default function ContactSection() {
   const [formData, setFormData] = useState({
@@ -28,12 +29,11 @@ export default function ContactSection() {
   return (
     <section id="contact" className="section">
       <div className="container">
-        <div className="section-title-container">
-          <h2 className="section-title shiny-3d-title">Contact Me</h2>
-          <p className="section-description">
-            Feel free to contact me for any questions or opportunities. I'll get back to you as soon as possible.
-          </p>
-        </div>
+        <SectionTitle
+          icon="fas fa-paper-plane"
+          title="Get In Touch"
+          description="Have a project proposal, engineering inquiry, or potential collaboration? My inbox is always open."
+        />
 
         <div className="contact-grid">
           <div data-aos="fade-right" data-aos-duration="1000">

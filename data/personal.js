@@ -57,14 +57,21 @@ export const personalInfo = {
     { label: "Contact", href: "#contact" }
   ],
   carouselPhotos: [
-    { src: "/photos/photo_1.jpeg", alt: "Moment 1" },
-    { src: "/photos/photo_2.jpeg", alt: "Moment 2" },
-    { src: "/photos/photo_3.png", alt: "Moment 3" },
-    { src: "/photos/photo_4.jpeg", alt: "Moment 4" },
-    { src: "/photos/photo_5.png", alt: "Moment 5" },
-    { src: "/photos/photo_6.png", alt: "Moment 6" },
-    { src: "/photos/photo_7.jpeg", alt: "Moment 7" },
-    { src: "/photos/photo_8.jpeg", alt: "Moment 8" },
-    { src: "/photos/photo_9.jpeg", alt: "Moment 9" }
+    { src: "/gallery/Head%20Palestine%20Desk.jpg", alt: "Muhammad Bilal Ashiq - Leadership", aspect: "portrait" },
+    { src: "/gallery/At%20FAST%20Islamabad%20Job%20FAIR.png", alt: "Bilal Ashiq at FAST Islamabad Job Fair", aspect: "landscape" },
+    { src: "/gallery/Job%20Fair%202025.jpg", alt: "Bilal Ashiq at FAST NUCES Job Fair 2025", aspect: "landscape" },
+    { src: "/gallery/QAU%20Memory.jpeg", alt: "Bilal Ashiq at Quaid-i-Azam University", aspect: "portrait" },
+    { src: "/gallery/COLABS.jpeg", alt: "Bilal Ashiq at COLABS Tech Incubator", aspect: "portrait" },
+    { src: "/gallery/ICPC%20Competition%20-%20PUCIT%20Lahore.jpg", alt: "Bilal Ashiq at ICPC Competition", aspect: "landscape" },
+    { src: "/gallery/NIC%20-%20AI%20Internship%20-%20Nationa%20Incubation%20center.jpg", alt: "Bilal Ashiq at NIC AI Internship", aspect: "landscape" },
+    { src: "/gallery/Presentation%20Winner.jpeg", alt: "Bilal Ashiq Presentation Winner", aspect: "portrait" },
+    { src: "/gallery/Programmer%20Forces.jpg", alt: "Bilal Ashiq at Programmer Force", aspect: "landscape" },
+    { src: "/gallery/Yieldwerx%20semicondotor%20company%20-%20Last%20round%20interview.jpg", alt: "Bilal Ashiq at Yieldwerx", aspect: "landscape" },
+    { src: "/gallery/Devsinc.jpg", alt: "Bilal Ashiq at Devsinc Visit", aspect: "landscape" },
+    { src: "/gallery/Invozone%20compay.jpg", alt: "Bilal Ashiq at Invozone", aspect: "landscape" },
+    { src: "/gallery/Seminar%20-%20AMNESTY%20-%20Women%20Empowerment.jpeg", alt: "Bilal Ashiq hosting Amnesty Seminar", aspect: "landscape" },
+    { src: "/gallery/Winning%20NeuroSecure%20Team.jpeg", alt: "Bilal Ashiq with Winning AI Team", aspect: "landscape" },
+    { src: "/gallery/Verified%20freelancer%20of%20pakistan.jpeg", alt: "Bilal Ashiq Verified Freelancer", aspect: "portrait" },
+    { src: "/gallery/COLABS%20PK%20Team%20at%20ZORO%20Lahore.jpeg", alt: "Bilal Ashiq with COLABS Team", aspect: "landscape" }
   ]
 };

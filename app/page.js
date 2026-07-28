@@ -10,6 +10,7 @@ import ProjectsSection from '@/sections/ProjectsSection';
 import SkillsSection from '@/sections/SkillsSection';
 import VolunteerSection from '@/sections/VolunteerSection';
 import CertificatesSection from '@/sections/CertificatesSection';
+import GalleryMarqueeSection from '@/sections/GalleryMarqueeSection';
 import ContactSection from '@/sections/ContactSection';
 import FooterSection from '@/sections/FooterSection';
 import CustomCursor from '@/components/CustomCursor';
@@ -79,6 +80,7 @@ export default function Home() {
       <SkillsSection />
       <VolunteerSection />
       <CertificatesSection />
+      <GalleryMarqueeSection />
       <ContactSection />
 
       <FooterSection />

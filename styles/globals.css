@@ -63,26 +63,58 @@
         }
 
         body {
-            font-family: 'Poppins', sans-serif;
+            font-family: "Times New Roman", Georgia, Cambria, serif;
             color: var(--foreground);
             background-color: var(--background);
-            line-height: 1.6;
+            line-height: 1.65;
             overflow-x: hidden;
             background-image: radial-gradient(rgba(108, 99, 255, 0.03) 1px, transparent 0);
             background-size: 28px 28px;
         }
-
-        
 
         h1,
         h2,
         h3,
         h4,
         h5,
-        h6 {
-            font-family: 'Montserrat', sans-serif;
+        h6,
+        .section-title,
+        .subsection-title {
+            font-family: "Times New Roman", Georgia, Cambria, serif;
             font-weight: 700;
             color: var(--foreground);
+            letter-spacing: -0.2px;
+        }
+
+        h3,
+        h4,
+        .card-title,
+        .experience-title,
+        .education-title,
+        .project-title,
+        .award-title,
+        .certificate-title,
+        .skill-category-title,
+        .about-card-title,
+        .volunteer-role {
+            font-family: "Times New Roman", Georgia, Cambria, serif;
+            font-weight: 600;
+        }
+
+        /* Hero Section Font Override (Hero Remains Original) */
+        .hero,
+        .hero h1,
+        .hero h2,
+        .hero p,
+        .hero span,
+        .hero div,
+        .hero button,
+        .hero a,
+        .hero-title,
+        .hero-subtitle,
+        .hero-greeting,
+        .status-pill {
+            font-family: 'Plus Jakarta Sans', 'Inter', system-ui, -apple-system, sans-serif !important;
         }
 
         a {
